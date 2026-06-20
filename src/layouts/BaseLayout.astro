@@ -1,0 +1,227 @@
+---
+import '../styles/global.css';
+import { SITE } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  keywords?: string[];
+  noindex?: boolean;
+  canonicalPath?: string;
+  hideWhatsApp?: boolean;
+  hideWhatsAppOnMobile?: boolean;
+}
+
+const { 
+  title, 
+  description = SITE.description,
+  image = '/images/og-default.jpg',
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  author = SITE.name,
+  keywords = [],
+  noindex = false,
+  canonicalPath,
+  hideWhatsApp = false,
+  hideWhatsAppOnMobile = false
+} = Astro.props;
+
+const canonicalUrl = canonicalPath ? `${SITE.url}${canonicalPath}` : `${SITE.url}${Astro.url.pathname}`;
+const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
+
+// Default keywords for wholesale activewear
+const defaultKeywords = [
+  'wholesale activewear',
+  'yoga leggings wholesale',
+  'activewear supplier',
+  'gym wear manufacturer',
+  'private label activewear',
+  'bulk yoga pants',
+  'fitness apparel wholesale',
+  'sportswear supplier China',
+  'custom activewear',
+  'MOQ 30 activewear'
+];
+
+const allKeywords = [...defaultKeywords, ...keywords].join(', ');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FP9QC74BPF"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FP9QC74BPF');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    <meta name="keywords" content={allKeywords} />
+    <meta name="author" content={author} />
+    <meta name="generator" content="Astro" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title} | {SITE.name}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+    <meta property="og:title" content={`${title} | ${SITE.name}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`${SITE.url}${Astro.url.pathname}`} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Wholesale Yoga - Ready To Ship Activewear From China Factory | MOQ 30-50 | 3-7 Day Shipping" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | ${SITE.name}`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": SITE.name,
+      "url": SITE.url,
+      "description": SITE.description,
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hefei",
+        "addressRegion": "Anhui",
+        "addressCountry": "CN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": `+${SITE.whatsapp}`,
+        "contactType": "sales"
+      }
+    })} />
+  </head>
+  <body class:list={['antialiased', { 'hide-whatsapp': hideWhatsApp, 'hide-whatsapp-mobile': hideWhatsAppOnMobile }]}>
+    <!-- Navigation -->
+    <header class="border-b border-[var(--color-border)] bg-white sticky top-0 z-40">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+        <a href="/" class="text-lg sm:text-xl font-bold tracking-tight text-[var(--color-primary)]">
+          WHOLESALE<span class="text-[var(--color-accent)]">YOGA</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--color-text-light)]">
+          <a href="/" class="hover:text-[var(--color-primary)] transition-colors">Home</a>
+          <a href="/inventory/" class="hover:text-[var(--color-primary)] transition-colors">Inventory</a>
+          <a href="/success-stories/" class="hover:text-[var(--color-primary)] transition-colors">Reviews</a>
+          <a href="/about/" class="hover:text-[var(--color-primary)] transition-colors">About</a>
+          <a href="/faq/" class="hover:text-[var(--color-primary)] transition-colors">FAQ</a>
+          <a href="/contact/" class="hover:text-[var(--color-primary)] transition-colors">Contact</a>
+        </div>
+        <a
+          href="/contact/"
+          class="bg-[var(--color-whatsapp)] text-white px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold hover:bg-green-700 transition-colors"
+        >
+          Inquiry
+        </a>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </nav>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--color-border)] bg-white">
+        <div class="px-4 py-3 space-y-2">
+          <a href="/" class="block py-2 text-sm font-medium text-[var(--color-text)]">Home</a>
+          <a href="/inventory/" class="block py-2 text-sm font-medium text-[var(--color-text)]">Inventory</a>
+          <a href="/success-stories/" class="block py-2 text-sm font-medium text-[var(--color-text)]">Reviews</a>
+          <a href="/about/" class="block py-2 text-sm font-medium text-[var(--color-text)]">About</a>
+          <a href="/faq/" class="block py-2 text-sm font-medium text-[var(--color-text)]">FAQ</a>
+          <a href="/contact/" class="block py-2 text-sm font-medium text-[var(--color-text)]">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--color-primary)] text-white mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div class="md:col-span-1">
+            <p class="text-xl font-bold tracking-tight mb-3">WHOLESALE<span class="text-[var(--color-accent-light)]">YOGA</span></p>
+            <p class="text-sm text-gray-400 leading-relaxed mb-4">{SITE.tagline}</p>
+            <a href="/catalog-read/?page=1" class="inline-block text-sm text-[var(--color-accent-light)] hover:text-white transition-colors font-medium border-b border-[var(--color-accent-light)] hover:border-white pb-0.5">View Product Catalog</a>
+          </div>
+          <div>
+            <p class="font-semibold text-sm uppercase tracking-wider mb-4 text-gray-400">Inventory</p>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><a href="/products/seamless-leggings/" class="hover:text-white transition-colors">Seamless Leggings</a></li>
+              <li><a href="/products/scrunch-leggings/" class="hover:text-white transition-colors">Scrunch Butt Leggings</a></li>
+              <li><a href="/products/flare-pants/" class="hover:text-white transition-colors">Flare Pants</a></li>
+              <li><a href="/products/sports-bra/" class="hover:text-white transition-colors">Sports Bra</a></li>
+              <li><a href="/products/butt-lifting-biker-shorts/" class="hover:text-white transition-colors">Biker Shorts</a></li>
+              <li><a href="/products/matching-sets/" class="hover:text-white transition-colors">Matching Sets</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-sm uppercase tracking-wider mb-4 text-gray-400">Company</p>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><a href="/about/" class="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="/success-stories/" class="hover:text-white transition-colors">Success Stories</a></li>
+              <li><a href="/faq/" class="hover:text-white transition-colors">FAQ</a></li>
+              <li><a href="/contact/" class="hover:text-white transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-sm uppercase tracking-wider mb-4 text-gray-400">Get In Touch</p>
+            <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[var(--color-whatsapp)] text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-green-600 transition-colors mb-4">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.387 0-4.607-.795-6.392-2.135l-.446-.345-3.22 1.079 1.079-3.22-.345-.446A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+              WhatsApp Us
+            </a>
+            <p class="text-sm text-gray-400">{SITE.email}</p>
+            <p class="text-sm text-gray-400 mt-1">{SITE.address}</p>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+          <p>&copy; 2024-{new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+          <p>{SITE.company}</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating View Catalog CTA -->
+    <a
+      href="https://yogabulk-backup.pages.dev/catalog-read/?page=1"
+      class="whatsapp-float flex items-center gap-2 bg-[var(--color-primary)] text-white px-5 py-3 rounded-full shadow-lg hover:bg-gray-800 transition-colors text-sm font-semibold"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+      Catalog
+    </a>
+
+    <!-- Mobile menu toggle -->
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+    </script>
+  </body>
+</html>

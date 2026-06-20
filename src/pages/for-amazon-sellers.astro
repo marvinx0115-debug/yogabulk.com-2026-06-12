@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../data/site";
+
+const pageFaqs = [
+  { q: "Are your products compliant with Amazon FBA requirements?", a: "Yes. Our factory holds OEKO-TEX 100 (fabric safety), BSCI (social compliance), and ISO 9001 (quality management) certifications. We can provide test reports for CPSIA (USA), REACH (EU), and CA Prop 65 upon request - everything needed for Amazon FBA approval." },
+  { q: "Can I get products that already have sales history on Amazon?", a: "We track bestseller rankings across Amazon US, UK, and EU. Our top performers include seamless leggings, scrunch butt leggings, and sports bras - styles with proven demand. Ask us for our current Amazon bestseller list." },
+  { q: "What packaging do you provide for Amazon FBA shipments?", a: "We offer FBA-ready packaging: individual poly bags with barcodes, size labels, and UPC labels. We can also apply your FNSKU labels before shipping. Custom boxes for case-pack FBA shipments are available." },
+  { q: "Can I split shipments between Amazon FBA warehouses?", a: "Yes! We support multi-address FBA shipments. Send us your shipping plan with all warehouse addresses and we will organize the shipments accordingly. We work with all major freight forwarders for FBA ocean and air freight." },
+  { q: "What is the typical profit margin for Amazon activewear?", a: "Our factory-direct pricing allows you to price at $35-55 for leggings (similar to Lululemon competitors), with your cost around $8-12/unit. That is a 70-80% margin before shipping. We recommend checking Amazon BSR rankings to validate price points." },
+];
+
+const benefits = [
+  { icon: "📋", title: "FBA Ready", desc: "OEKO-TEX, CPSIA, REACH test reports included. FBA-ready packaging with barcodes and labels. No compliance headaches." },
+  { icon: "🏆", title: "BSR Proven Styles", desc: "We track Amazon bestseller rankings. Our top sellers have proven sales history - skip the guesswork and stock what actually sells." },
+  { icon: "📦", title: "FBA Warehousing Support", desc: "Multi-address shipments to any FBA warehouse. Sea freight available for bulk orders (500+ pcs) to minimize per-unit shipping costs." },
+  { icon: "💰", title: "High Margins", desc: "Factory-direct pricing at $8-12/unit for leggings. Price at $35-55 and keep 70-80% margins before shipping costs." },
+];
+---
+<BaseLayout
+  title="Activewear for Amazon FBA Sellers"
+  description="Amazon FBA compliant wholesale activewear. OEKO-TEX and CPSIA test reports included. BSR proven styles, FBA-ready packaging. Dropship from China with high margins."
+>
+  <section style="background:linear-gradient(135deg,#FF9900 0%,#e68a00 100%);color:white;">
+    <div style="max-width:56rem;margin:0 auto;padding:4rem 1.5rem;text-align:center;">
+      <p style="color:rgba(255,255,255,0.8);font-weight:600;font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">For Amazon Sellers</p>
+      <h1 style="font-size:2.5rem;font-weight:800;margin-bottom:1rem;">Stock What Sells on Amazon</h1>
+      <p style="color:rgba(255,255,255,0.9);max-width:42rem;margin:0 auto 1.5rem;font-size:1.1rem;">FBA-compliant wholesale activewear with test reports included. BSR-proven styles, factory-direct pricing, and FBA-ready packaging. Start selling without compliance headaches.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:white;padding:0.875rem 2rem;border-radius:9999px;font-weight:700;font-size:0.9rem;">Get FBA Product List</a>
+        <a href="/inventory" style="display:inline-flex;align-items:center;gap:0.5rem;border:2px solid rgba(255,255,255,0.4);color:white;padding:0.875rem 2rem;border-radius:9999px;font-weight:600;font-size:0.9rem;">View Inventory</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+    <h2 style="font-size:1.5rem;font-weight:800;color:var(--color-primary);text-align:center;margin-bottom:2rem;">Why Amazon Sellers Choose Us</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.5rem;">
+      {benefits.map(b => (
+        <div style="background:white;border:1px solid var(--color-border);border-radius:1rem;padding:1.5rem;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">{b.icon}</div>
+          <h3 style="font-size:1rem;font-weight:700;color:var(--color-primary);margin-bottom:0.5rem;">{b.title}</h3>
+          <p style="font-size:0.875rem;color:var(--color-text-light);line-height:1.6;">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div style="background:var(--color-secondary);">
+    <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+      <h2 style="font-size:1.5rem;font-weight:800;color:var(--color-primary);margin-bottom:1.5rem;text-align:center;">Amazon Seller FAQ</h2>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        {pageFaqs.map(faq => (
+          <details style="background:white;border:1px solid var(--color-border);border-radius:0.75rem;overflow:hidden;">
+            <summary style="display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;cursor:pointer;list-style:none;gap:1rem;">
+              <span style="font-weight:600;color:var(--color-text);font-size:0.9rem;">{faq.q}</span>
+              <svg style="width:1.25rem;height:1.25rem;color:var(--color-text-light);flex-shrink:0;transition:transform 0.2s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div style="padding:0 1.25rem 1.25rem;font-size:0.875rem;color:var(--color-text-light);line-height:1.7;border-top:1px solid var(--color-border);padding-top:0.75rem;">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+    <div style="background:linear-gradient(135deg,#FF9900 0%,#e68a00 100%);border-radius:1.5rem;padding:2.5rem;text-align:center;color:white;">
+      <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:0.75rem;">Get Your FBA Product Catalog</h2>
+      <p style="color:rgba(255,255,255,0.85);margin-bottom:1.5rem;font-size:0.9rem;">Send us your target categories and we will send you a detailed FBA-ready product list with pricing, MOQ, and test report availability.</p>
+      <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:white;padding:1rem 2.5rem;border-radius:9999px;font-weight:700;font-size:1rem;">Request FBA Catalog</a>
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+    })),
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE.url },
+      { "@type": "ListItem", "position": 2, "name": "For Amazon Sellers", "item": SITE.url + "/for-amazon-sellers" },
+    ],
+  })} />
+</BaseLayout>

@@ -1,0 +1,114 @@
+---
+// RelatedResources.astro - Internal Link Component for SEO
+// Usage: <RelatedResources currentPage="product" />
+
+export interface Props {
+  currentPage: 'product' | 'inventory' | 'buyer' | 'data' | 'comparison' | 'case-study' | 'about' | 'contact' | 'faq';
+  category?: string;
+}
+
+const { currentPage, category } = Astro.props;
+
+// Define related links based on current page context
+const getRelatedLinks = () => {
+  const baseLinks = [
+    { title: 'Product Catalog', url: '/products/', desc: 'Browse 300+ wholesale activewear styles' },
+    { title: 'Inventory Status', url: '/inventory/', desc: 'Check real-time stock availability' },
+    { title: 'FAQ Center', url: '/faq/', desc: 'Find answers to common questions' },
+    { title: 'Contact Us', url: '/contact/', desc: 'Get a custom quote within 30 minutes' },
+  ];
+
+  const pageSpecificLinks: Record<string, Array<{title: string, url: string, desc: string}>> = {
+    'product': [
+      { title: 'Amazon FBA Guide', url: '/for-amazon-sellers/', desc: 'Complete guide for Amazon sellers' },
+      { title: 'TikTok Shop Guide', url: '/for-tiktok-sellers/', desc: 'How to sell on TikTok Shop' },
+      { title: 'Pricing Guide', url: '/resources/pricing/', desc: 'Wholesale pricing tiers explained' },
+      { title: 'MOQ Guide', url: '/resources/moq/', desc: 'Minimum order quantities by product' },
+      { title: 'Shipping Guide', url: '/resources/shipping/', desc: 'DHL/FedEx shipping costs & timelines' },
+      { title: 'Custom Logo Service', url: '/resources/customization/', desc: '4 techniques for branded activewear' },
+    ],
+    'inventory': [
+      { title: 'Seamless Leggings', url: '/products/seamless-leggings/', desc: '3,500+ pcs in stock' },
+      { title: 'Scrunch Butt Leggings', url: '/products/scrunch-butt-leggings/', desc: 'TikTok viral styles' },
+      { title: 'Sports Bras', url: '/products/sports-bra/', desc: 'Matching sets available' },
+      { title: 'Flare Pants', url: '/products/flare-pants/', desc: 'Trending 2024 style' },
+    ],
+    'buyer': [
+      { title: 'Success Stories', url: '/success-stories/', desc: 'See how sellers scaled their business' },
+      { title: 'Fabric Guide', url: '/resources/fabric-guide/', desc: 'Understanding activewear materials' },
+      { title: 'Sizing Guide', url: '/resources/sizing/', desc: 'Size charts for all products' },
+    ],
+    'data': [
+      { title: 'Market Trends', url: '/resources/trends/', desc: '2025 activewear trends' },
+      { title: 'Competitor Analysis', url: '/resources/competitors/', desc: 'How we compare to other suppliers' },
+    ],
+    'comparison': [
+      { title: 'Why Choose YogaBulk', url: '/resources/why-us/', desc: 'Our advantages over competitors' },
+      { title: 'Quality Standards', url: '/resources/quality/', desc: 'OEKO-TEX, BSCI certifications' },
+    ],
+    'case-study': [
+      { title: 'Amazon Success Story', url: '/success-stories/amazon/', desc: '50 pcs to 3,000 pcs/month' },
+      { title: 'TikTok Success Story', url: '/success-stories/tiktok/', desc: '100 pcs to 5,000 pcs/month' },
+    ],
+    'about': [
+      { title: 'Our Factory', url: '/resources/factory-tour/', desc: 'Virtual tour of our facility' },
+      { title: 'Quality Control', url: '/resources/quality/', desc: 'AQL 2.5 inspection process' },
+      { title: 'Certifications', url: '/resources/certifications/', desc: 'OEKO-TEX, BSCI, ISO 9001' },
+    ],
+    'contact': [
+      { title: 'WhatsApp Quick Quote', url: 'https://wa.me/8615556105390', desc: 'Response within 30 minutes' },
+      { title: 'Sample Order', url: '/resources/samples/', desc: 'Order samples before bulk' },
+    ],
+    'faq': [
+      { title: 'Getting Started', url: '/faq/getting-started/', desc: 'New buyer guide' },
+      { title: 'Payment & Pricing', url: '/faq/payment/', desc: 'Payment methods and discounts' },
+      { title: 'Shipping & Logistics', url: '/faq/shipping/', desc: 'Delivery times and costs' },
+    ],
+  };
+
+  const specific = pageSpecificLinks[currentPage] || [];
+  return [...specific, ...baseLinks].slice(0, 10); // Max 10 links
+};
+
+const relatedLinks = getRelatedLinks();
+---
+
+{relatedLinks.length > 0 && (
+  <section class="related-resources" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 3rem 1.5rem; margin-top: 3rem; border-top: 1px solid #e2e8f0;">
+    <div style="max-width: 72rem; margin: 0 auto;">
+      <h2 style="font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem; text-align: center;">
+        Related Resources
+      </h2>
+      <p style="text-align: center; color: #64748b; margin-bottom: 2rem; font-size: 0.95rem;">
+        Explore more wholesale activewear resources
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        {relatedLinks.map((link) => (
+          <a 
+            href={link.url} 
+            style="
+              display: block; 
+              background: white; 
+              padding: 1.25rem; 
+              border-radius: 0.75rem; 
+              text-decoration: none; 
+              border: 1px solid #e2e8f0;
+              transition: all 0.2s ease;
+              box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            "
+            onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)';"
+            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 1px 3px rgba(0,0,0,0.05)';"
+          >
+            <div style="font-weight: 600; color: #2563eb; margin-bottom: 0.25rem; font-size: 1rem;">
+              {link.title} →
+            </div>
+            <div style="font-size: 0.875rem; color: #64748b; line-height: 1.5;">
+              {link.desc}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

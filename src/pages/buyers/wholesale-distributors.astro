@@ -1,0 +1,289 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedResources from "../../components/RelatedResources.astro";
+import { distributorCases } from "../../data/caseStudies";
+
+const title = "Wholesale Distributor Activewear | Bulk Supplier Partner";
+const description = "Activewear wholesale for distributors. Bulk pricing, container loads, exclusive territories. 50+ distributors partner with YogaBulk. MOQ 1000pcs. Factory direct pricing.";
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Hero -->
+    <section class="text-center mb-12">
+      <div class="inline-block bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+        🤝 50+ Distributor Partners
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        Wholesale Distributor Partnership
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Bulk activewear for wholesale distributors. Container-load pricing, exclusive territories, 
+        and reliable supply. Partner with a factory that understands distribution.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium">
+          📦 Container Loads
+        </span>
+        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
+          🌍 Exclusive Territories
+        </span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+          💰 Bulk Pricing
+        </span>
+      </div>
+    </section>
+
+    <!-- Why Distributors Choose Us -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Why Distributors Partner with YogaBulk</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📦</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Container Load Pricing</h3>
+          <p class="text-gray-600 text-sm">20ft and 40ft container options. Maximum cost efficiency for large volume orders. FOB, CIF, and DDP terms available.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🌍</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Exclusive Territories</h3>
+          <p class="text-gray-600 text-sm">Secure exclusive distribution rights for your region. We won't sell to other distributors in your territory.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🏭</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Factory Direct</h3>
+          <p class="text-gray-600 text-sm">No middlemen. Work directly with the manufacturer for best pricing, quality control, and communication.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📋</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Custom Specifications</h3>
+          <p class="text-gray-600 text-sm">Modify fabrics, colors, sizing, and packaging to match your market's preferences. Full customization support.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📊</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Consistent Supply</h3>
+          <p class="text-gray-600 text-sm">100,000+ pcs monthly production capacity. Reliable supply chain ensures you never run out of stock.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">✅</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Quality Assurance</h3>
+          <p class="text-gray-600 text-sm">AQL 2.5 inspection standard. Third-party inspection available. Consistent quality batch after batch.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Volume Pricing Tiers -->
+    <section class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Distributor Volume Pricing</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <div class="text-sm text-gray-600 mb-2">Tier 1</div>
+          <div class="text-3xl font-bold text-indigo-600 mb-2">1,000</div>
+          <div class="text-sm text-gray-600 mb-4">pieces</div>
+          <div class="text-2xl font-bold text-gray-900 mb-2">$4.80</div>
+          <div class="text-sm text-gray-600">per piece avg</div>
+          <div class="mt-4 pt-4 border-t border-gray-100 text-sm text-green-600">15% off retail</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <div class="text-sm text-gray-600 mb-2">Tier 2</div>
+          <div class="text-3xl font-bold text-indigo-600 mb-2">5,000</div>
+          <div class="text-sm text-gray-600 mb-4">pieces</div>
+          <div class="text-2xl font-bold text-gray-900 mb-2">$4.20</div>
+          <div class="text-sm text-gray-600">per piece avg</div>
+          <div class="mt-4 pt-4 border-t border-gray-100 text-sm text-green-600">25% off retail</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 text-center border-2 border-indigo-500">
+          <div class="text-sm text-indigo-600 font-medium mb-2">Most Popular</div>
+          <div class="text-3xl font-bold text-indigo-600 mb-2">10,000</div>
+          <div class="text-sm text-gray-600 mb-4">pieces</div>
+          <div class="text-2xl font-bold text-gray-900 mb-2">$3.80</div>
+          <div class="text-sm text-gray-600">per piece avg</div>
+          <div class="mt-4 pt-4 border-t border-gray-100 text-sm text-green-600">32% off retail</div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 text-center">
+          <div class="text-sm text-gray-600 mb-2">Container</div>
+          <div class="text-3xl font-bold text-indigo-600 mb-2">20ft</div>
+          <div class="text-sm text-gray-600 mb-4">~25,000 pcs</div>
+          <div class="text-2xl font-bold text-gray-900 mb-2">$3.40</div>
+          <div class="text-sm text-gray-600">per piece avg</div>
+          <div class="mt-4 pt-4 border-t border-gray-100 text-sm text-green-600">40% off retail</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shipping Options -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Shipping & Logistics</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-2xl">🚢</span> Sea Freight (FCL)
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>• 20ft container: ~25,000 pcs</li>
+            <li>• 40ft container: ~50,000 pcs</li>
+            <li>• Transit: 15-35 days</li>
+            <li>• Best for: Large orders</li>
+            <li>• Cost: $1,500-3,500/container</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-2xl">✈️</span> Air Freight
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>• Minimum: 500kg</li>
+            <li>• Transit: 5-10 days</li>
+            <li>• Best for: Urgent restock</li>
+            <li>• Cost: $4-8/kg</li>
+            <li>• Tracking: Full visibility</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span class="text-2xl">📦</span> Express Courier
+          </h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>• DHL, FedEx, UPS</li>
+            <li>• Transit: 3-7 days</li>
+            <li>• Best for: Samples, small orders</li>
+            <li>• Cost: $5-12/kg</li>
+            <li>• Door-to-door service</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Distributor Success Stories</h2>
+      <div class="space-y-8">
+        {distributorCases.map((story) => (
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="grid md:grid-cols-3 gap-0">
+              <div class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white p-8 flex flex-col justify-center">
+                <div class="text-4xl font-bold mb-2">{story.currentVolume}</div>
+                <div class="text-indigo-100 mb-4">Monthly Volume</div>
+                <div class="text-sm text-indigo-100">Started: {story.startedWith}</div>
+                <div class="text-sm text-indigo-100">Timeline: {story.timeline}</div>
+              </div>
+              <div class="md:col-span-2 p-8">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                  <div>
+                    <h3 class="font-bold text-gray-900">{story.name}</h3>
+                    <p class="text-sm text-gray-600">{story.businessType} • {story.location}</p>
+                  </div>
+                </div>
+                <blockquote class="text-gray-700 italic mb-4">"{story.testimonial}"</blockquote>
+                <div class="grid grid-cols-2 gap-4">
+                  {story.results.slice(0, 4).map((result) => (
+                    <div class="flex items-center gap-2">
+                      <span class="text-green-500">✓</span>
+                      <span class="text-sm text-gray-700">{result}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Partnership Process -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Partnership Process</h2>
+      <div class="grid md:grid-cols-5 gap-4">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+          <h3 class="font-bold text-gray-900 mb-2">Initial Consultation</h3>
+          <p class="text-sm text-gray-600">Discuss your market, volume needs, and territory requirements.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+          <h3 class="font-bold text-gray-900 mb-2">Sample Evaluation</h3>
+          <p class="text-sm text-gray-600">Order samples to evaluate quality, sizing, and customization options.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+          <h3 class="font-bold text-gray-900 mb-2">Agreement & Terms</h3>
+          <p class="text-sm text-gray-600">Sign distributor agreement with exclusive territory and pricing terms.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+          <h3 class="font-bold text-gray-900 mb-2">First Order</h3>
+          <p class="text-sm text-gray-600">Place your first container or bulk order. We handle production and QC.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
+          <h3 class="font-bold text-gray-900 mb-2">Ongoing Partnership</h3>
+          <p class="text-sm text-gray-600">Regular orders, market feedback, and continuous product development.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl font-bold mb-4">Become a Distributor Partner</h2>
+      <p class="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+        Join 50+ distributors who partner with YogaBulk for reliable supply and competitive pricing. 
+        Secure your exclusive territory today.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/8615556105390?text=Hi,%20I'm%20interested%20in%20becoming%20a%20distributor"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition shadow-lg"
+        >
+          💬 Discuss Partnership
+        </a>
+        <a 
+          href="/inventory/" 
+          class="inline-block bg-indigo-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-indigo-700 transition border-2 border-indigo-400"
+        >
+          Browse Product Range
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <RelatedResources currentPage="buyer" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Wholesale Distributor Activewear Partnership Guide 2025",
+      "description": "Complete guide for wholesale distributors looking to partner with an activewear manufacturer. Includes volume pricing and territory options.",
+      "url": "https://yogabulk-backup.pages.dev/buyers/wholesale-distributors/",
+      "author": {
+        "@type": "Organization",
+        "name": "YogaBulk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "YogaBulk",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yogabulk-backup.pages.dev/favicon.svg"
+        }
+      },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-06-01"
+    }
+  </script>
+</BaseLayout>

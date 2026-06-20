@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const R2_BASE = 'https://pub-9990b175cd034d858ac72d0f64f140a0.r2.dev';
+
+// R2 pages: 138 total, pages 1-138, no gaps
+const PAGES = Array.from({ length: 138 }, (_, i) => i + 1);
+
+const pageList = PAGES.map(pageNum => {
+  const num = String(pageNum).padStart(3, '0');
+  return `${R2_BASE}/page-${num}.webp`;
+});
+
+const TOTAL_PAGES = PAGES.length;
+---
+
+<BaseLayout title="Product Catalog Reader - YOGABULK" hideWhatsAppOnMobile={true}>
+<div class="min-h-screen bg-gray-50">
+  <!-- Page indicator bar -->
+  <div class="max-w-7xl mx-auto px-4 py-2 text-center">
+    <span class="text-sm text-gray-500" id="pageIndicator">Page 1 / {TOTAL_PAGES}</span>
+  </div>
+
+  <!-- Main layout: desktop two-column / mobile single-column -->
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-3 px-4 pb-40 md:pb-4">
+    <!-- Desktop left sidebar: vertical thumbnail strip -->
+    <aside class="hidden md:flex md:w-36 lg:w-44 overflow-y-auto bg-white rounded-lg border border-gray-200 p-2 flex-col gap-1.5 shadow-sm md:h-[82vh]" id="sidebar">
+      <p class="text-xs text-gray-400 text-center py-1 font-medium uppercase tracking-wider">All Pages</p>
+      {pageList.map((imgSrc, idx) => {
+        const pageNum = PAGES[idx];
+        return (
+          <button
+            data-page={pageNum}
+            data-index={idx}
+            class="sidebar-thumb border rounded p-0.5 text-xs transition-all duration-150 flex flex-col items-center border-gray-200 hover:bg-gray-50 hover:border-gray-300"
+          >
+            <img
+              src={imgSrc}
+              loading="lazy"
+              class="w-full h-16 object-contain rounded"
+              alt={`Page ${pageNum}`}
+            />
+            <span class="text-[10px] text-gray-500 mt-0.5">{pageNum}</span>
+          </button>
+        )
+      })}
+    </aside>
+
+    <!-- Main image viewer -->
+    <main class="flex-1 bg-white rounded-lg border border-gray-200 flex items-center justify-center relative overflow-hidden shadow-sm md:h-[82vh] h-[70vh]">
+      <img
+        id="mainImg"
+        src={pageList[0]}
+        class="max-w-full max-h-full md:cursor-zoom-in object-contain transition-opacity duration-200"
+        alt="Catalog page"
+      />
+      <!-- Prev/Next buttons: desktop overlay style -->
+      <button id="prevBtn" class="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white border border-gray-300 rounded-full w-10 h-10 items-center justify-center shadow-md text-gray-600 hover:text-gray-900 transition-colors" aria-label="Previous page">◀</button>
+      <button id="nextBtn" class="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white border border-gray-300 rounded-full w-10 h-10 items-center justify-center shadow-md text-gray-600 hover:text-gray-900 transition-colors" aria-label="Next page">▶</button>
+    </main>
+  </div>
+
+  <!-- Mobile: bottom thumbnail strip + prev/next navigation -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-30">
+    <!-- Thumbnail horizontal scroll -->
+    <div id="mobileThumbStrip" class="flex gap-2 overflow-x-auto px-3 py-2" style="scrollbar-width: none; -ms-overflow-style: none;">
+      {pageList.map((imgSrc, idx) => {
+        const pageNum = PAGES[idx];
+        return (
+          <button
+            data-page={pageNum}
+            data-index={idx}
+            class="mobile-thumb flex-shrink-0 border-2 rounded p-0.5 transition-all duration-150 border-gray-200 w-14"
+          >
+            <img
+              src={imgSrc}
+              loading="lazy"
+              class="w-full h-16 object-contain rounded"
+              alt={`Page ${pageNum}`}
+            />
+            <span class="text-[9px] text-gray-500 block text-center mt-0.5">{pageNum}</span>
+          </button>
+        )
+      })}
+    </div>
+    <!-- Prev / Next bar -->
+    <div class="flex items-center justify-between gap-2 px-4 py-2 border-t border-gray-100">
+      <button id="prevBtnMobile" class="flex items-center gap-1 px-4 py-2 rounded-lg bg-gray-100 text-gray-700 text-sm font-medium active:bg-gray-200 transition-colors">
+        <span>◀</span> <span>Prev</span>
+      </button>
+      <span class="text-xs text-gray-500" id="pageIndicatorMobile">1 / {TOTAL_PAGES}</span>
+      <button id="nextBtnMobile" class="flex items-center gap-1 px-4 py-2 rounded-lg bg-gray-100 text-gray-700 text-sm font-medium active:bg-gray-200 transition-colors">
+        <span>Next</span> <span>▶</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Zoom modal -->
+  <div id="zoomModal" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4" style="display:none;">
+    <button id="closeZoomBtn" class="absolute top-4 right-4 text-white text-3xl hover:text-amber-400 transition-colors z-10">×</button>
+    <img id="zoomImg" class="max-w-full max-h-full object-contain" alt="Zoomed page">
+  </div>
+</div>
+
+<style>
+  /* Thin scrollbar for mobile thumbnail strip - hidden for cleaner look */
+  #mobileThumbStrip::-webkit-scrollbar {
+    display: none;
+  }
+  #mobileThumbStrip {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Sidebar scrollbar styling */
+  #sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+  #sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #sidebar::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 2px;
+  }
+
+  /* Mobile thumbnail active state */
+  .mobile-thumb-active {
+    border-color: #f59e0b !important;
+    background-color: #fffbeb !important;
+  }
+</style>
+
+<script define:vars={{ pageList, PAGES, TOTAL_PAGES }}>
+  const mainImg = document.getElementById('mainImg');
+  const zoomModal = document.getElementById('zoomModal');
+  const zoomImg = document.getElementById('zoomImg');
+  const pageIndicator = document.getElementById('pageIndicator');
+  const pageIndicatorMobile = document.getElementById('pageIndicatorMobile');
+  const mobileThumbStrip = document.getElementById('mobileThumbStrip');
+  let currentIndex = 0;
+
+  // Detect mobile
+  const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+
+  function updateMobileThumbHighlight() {
+    if (!mobileThumbStrip) return;
+    mobileThumbStrip.querySelectorAll('[data-index]').forEach(btn => {
+      if (Number(btn.dataset.index) === currentIndex) {
+        btn.classList.add('mobile-thumb-active');
+        btn.classList.remove('border-gray-200');
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      } else {
+        btn.classList.remove('mobile-thumb-active');
+        btn.classList.add('border-gray-200');
+      }
+    });
+  }
+
+  // Get initial page from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const initPage = Number(urlParams.get('page')) || 1;
+  const initIndex = PAGES.indexOf(initPage);
+  if (initIndex >= 0) {
+    currentIndex = initIndex;
+    mainImg.src = pageList[initIndex];
+  }
+
+  function switchPage(index) {
+    if (index < 0 || index >= TOTAL_PAGES) return;
+    currentIndex = index;
+    const pageNum = PAGES[index];
+    mainImg.src = pageList[index];
+    pageIndicator.textContent = 'Page ' + pageNum + ' / ' + TOTAL_PAGES;
+    if (pageIndicatorMobile) {
+      pageIndicatorMobile.textContent = pageNum + ' / ' + TOTAL_PAGES;
+    }
+
+    // Update desktop sidebar highlights
+    document.querySelectorAll('#sidebar [data-index]').forEach(btn => {
+      if (Number(btn.dataset.index) === index) {
+        btn.classList.add('bg-amber-100', 'border-amber-400');
+        btn.classList.remove('border-gray-200');
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        btn.classList.remove('bg-amber-100', 'border-amber-400');
+        btn.classList.add('border-gray-200');
+      }
+    });
+
+    // Update mobile thumbnail highlights + scroll to active
+    if (isMobile()) {
+      updateMobileThumbHighlight();
+    }
+
+    // Update URL without reload
+    const url = new URL(window.location);
+    url.searchParams.set('page', pageNum);
+    history.replaceState(null, '', url);
+  }
+
+  // Desktop sidebar click handlers
+  document.querySelectorAll('#sidebar [data-index]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchPage(Number(btn.dataset.index));
+    });
+  });
+
+  // Mobile thumbnail click handlers
+  document.querySelectorAll('#mobileThumbStrip [data-index]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchPage(Number(btn.dataset.index));
+    });
+  });
+
+  // Desktop Prev/Next buttons
+  document.getElementById('prevBtn').addEventListener('click', () => switchPage(currentIndex - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => switchPage(currentIndex + 1));
+
+  // Mobile Prev/Next buttons
+  const prevBtnMobile = document.getElementById('prevBtnMobile');
+  const nextBtnMobile = document.getElementById('nextBtnMobile');
+  if (prevBtnMobile) prevBtnMobile.addEventListener('click', () => switchPage(currentIndex - 1));
+  if (nextBtnMobile) nextBtnMobile.addEventListener('click', () => switchPage(currentIndex + 1));
+
+  // Zoom modal (desktop only)
+  mainImg.addEventListener('click', () => {
+    if (isMobile()) return;
+    zoomImg.src = mainImg.src;
+    zoomModal.style.display = 'flex';
+    zoomModal.classList.remove('hidden');
+  });
+
+  document.getElementById('closeZoomBtn').addEventListener('click', closeZoom);
+  zoomModal.addEventListener('click', (e) => {
+    if (e.target === zoomModal) closeZoom();
+  });
+
+  function closeZoom() {
+    zoomModal.style.display = 'none';
+    zoomModal.classList.add('hidden');
+  }
+
+  // Keyboard navigation (desktop)
+  document.addEventListener('keydown', (e) => {
+    if (zoomModal.style.display === 'flex') {
+      if (e.key === 'Escape') closeZoom();
+      return;
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') switchPage(currentIndex - 1);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') switchPage(currentIndex + 1);
+  });
+
+  // Touch swipe navigation (mobile)
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
+
+  mainImg.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+
+  mainImg.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 2) {
+      if (deltaX > 0) {
+        switchPage(currentIndex - 1);
+      } else {
+        switchPage(currentIndex + 1);
+      }
+    }
+  }
+
+  // Initial render
+  switchPage(currentIndex);
+</script>
+</BaseLayout>

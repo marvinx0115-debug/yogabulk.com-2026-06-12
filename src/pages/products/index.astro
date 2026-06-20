@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../data/site';
+import { products } from '../../data/products';
+
+// Flatten: each product's every image becomes its own card → 16 cards total
+const allItems = products.flatMap(p => p.images.map((img, i) => ({ ...p, displayImage: img, imageIndex: i })));
+---
+
+<BaseLayout title="In Stock Products | Wholesale Yoga" description="Browse 100+ in-stock activewear styles for wholesale. Seamless leggings, scrunch butt leggings, flare pants, sports bras, biker shorts, matching sets. Low MOQ 30-50pcs.">
+  <!-- Hero -->
+  <section class="bg-[var(--color-primary)] text-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <p class="text-[var(--color-accent-light)] font-medium text-xs sm:text-sm tracking-widest uppercase mb-2">100+ Styles In Stock</p>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4">In Stock Products</h1>
+      <p class="text-sm sm:text-base text-gray-300 max-w-xl">Real ready stock, not dropship. All items ship within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- All Products Grid: 16 items, 4 columns -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 relative">
+    <!-- Top-right: View Catalog text link (no background) -->
+    <div class="flex justify-end mb-6 sm:mb-8">
+      <a
+        href={SITE.whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 text-[var(--color-whatsapp)] text-sm sm:text-base font-semibold hover:underline transition-colors"
+      >
+        View Catalog →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+      {allItems.map((item) => (
+        <a href={`/products/${item.slug}`} class="group bg-white border border-[var(--color-border)] rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-lg transition-all">
+          <div class="aspect-square bg-[var(--color-secondary)] flex items-center justify-center overflow-hidden">
+            <img src={item.displayImage} alt={`${item.name} - view ${item.imageIndex + 1}`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+          </div>
+          <div class="p-2.5 sm:p-4">
+            <p class="text-[10px] sm:text-xs text-[var(--color-accent)] font-medium mb-0.5 sm:mb-1">{item.category}</p>
+            <h3 class="font-semibold text-xs sm:text-sm text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors leading-tight">{item.name}</h3>
+            <div class="flex items-center gap-1.5 sm:gap-2 mt-1.5 sm:mt-2 flex-wrap">
+              <span class={`text-[10px] sm:text-xs font-medium ${item.stock === 'In Stock' ? 'text-[var(--color-stock-green)]' : 'text-[var(--color-stock-limited)]'}`}>● {item.stock}</span>
+              <span class="text-[10px] sm:text-xs text-[var(--color-text-light)]">MOQ {item.moq}</span>
+              {item.logoSupport && <span class="text-[10px] sm:text-xs bg-[var(--color-secondary)] text-[var(--color-accent)] px-1.5 sm:px-2 py-0.5 rounded-full hidden sm:inline">Custom Logo</span>}
+            </div>
+            <div class="flex items-center justify-between mt-2 sm:mt-3">
+              <p class="text-xs sm:text-sm font-bold text-[var(--color-primary)]">${item.price}<span class="text-[10px] sm:text-xs font-normal text-[var(--color-text-light)]"> /pc</span></p>
+              <span class="text-[10px] sm:text-xs text-[var(--color-text-light)]">{item.shipDays}d</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[var(--color-secondary)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-[var(--color-primary)] mb-4">Can't Find What You Need?</h2>
+      <p class="text-[var(--color-text-light)] mb-6">We have 200+ styles not listed here. Tell us what you're looking for.</p>
+      <a
+        href={SITE.whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-[var(--color-whatsapp)] text-white px-8 py-3 rounded-full font-semibold hover:bg-green-600 transition-colors"
+      >
+        Ask on WhatsApp →
+      </a>
+    </div>
+  </section>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE.url },
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE.url}/products` }
+    ]
+  })} />
+
+  <!-- Product (ItemList) Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Wholesale Activewear Products",
+    "description": "Premium activewear wholesale - seamless leggings, scrunch butt leggings, flare pants, sports bras, biker shorts, matching sets. Low MOQ 30-50pcs.",
+    "numberOfItems": products.length,
+    "itemListElement": products.map((p, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "url": `${SITE.url}/products/${p.slug}`,
+      "name": p.name,
+      "description": p.description,
+      "image": `${SITE.url}${p.images[0]}`,
+      "brand": { "@type": "Brand", "name": "YogaBulk" },
+      "sku": p.sku || p.id,
+      "offers": {
+        "@type": "Offer",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "priceCurrency": "USD",
+          "minPrice": String(p.minPrice || p.price.split('-')[0].replace('$', '')),
+          "maxPrice": String(p.maxPrice || p.price.split('-')[1] || p.price.split('-')[0].replace('$', ''))
+        },
+        "availability": p.stock === 'In Stock'
+          ? "https://schema.org/InStock"
+          : "https://schema.org/LimitedAvailability",
+        "seller": { "@type": "Organization", "name": SITE.name }
+      },
+      "material": p.material || p.fabric,
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "MOQ", "value": `${p.moq} pieces` },
+        { "@type": "PropertyValue", "name": "Lead Time", "value": p.leadTime || `${p.shipDays} days` },
+        { "@type": "PropertyValue", "name": "Stock Status", "value": p.stockStatus || p.stock }
+      ]
+    }))
+  })} />
+</BaseLayout>

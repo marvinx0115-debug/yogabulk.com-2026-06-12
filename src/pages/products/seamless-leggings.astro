@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../data/site';
+import { products } from '../../data/products';
+
+const catProducts = products.filter(p => p.category === 'Seamless Leggings');
+---
+
+<BaseLayout 
+  title="Seamless Leggings Wholesale | Bulk Activewear Manufacturer" 
+  description="Wholesale seamless leggings from China factory. MOQ 30-50 sets, 3-7 day shipping, custom logo available. 24+ seamless styles for Amazon, TikTok Shop & Shopify sellers."
+>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Hero -->
+    <section class="text-center mb-12">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">
+        Seamless Leggings Wholesale
+      </h1>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Premium seamless activewear directly from our Hefei factory.
+        Low MOQ 30-50pcs, fast 3-7 day shipping, custom branding available.
+      </p>
+    </section>
+
+    <!-- Key Selling Points -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-[var(--color-secondary)] rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">📦</div>
+        <p class="font-semibold text-sm">MOQ 30-50pcs</p>
+      </div>
+      <div class="bg-[var(--color-secondary)] rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🚀</div>
+        <p class="font-semibold text-sm">3-7 Day Shipping</p>
+      </div>
+      <div class="bg-[var(--color-secondary)] rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">🔧</div>
+        <p class="font-semibold text-sm">Custom Logo</p>
+      </div>
+      <div class="bg-[var(--color-secondary)] rounded-xl p-4 text-center">
+        <div class="text-2xl mb-2">✓</div>
+        <p class="font-semibold text-sm">{catProducts.length}+ Styles</p>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      {catProducts.map((product) => (
+        <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+          <a href={`/products/${product.slug}/`}>
+            <div class="aspect-[3/4] bg-gray-100">
+              <img src={product.images[0]} alt={product.name} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          </a>
+          <div class="p-4">
+            <h2 class="font-bold text-lg mb-2">{product.name}</h2>
+            <p class="text-sm text-gray-600 mb-2">{product.fabric}</p>
+            <p class="text-xs text-[var(--color-accent)] font-semibold">SKU: {product.id}</p>
+            <p class="text-sm font-bold mt-1">{product.price}<span class="text-xs font-normal text-gray-500"> /pc</span></p>
+            <div class="flex items-center gap-1 mt-1 text-xs text-gray-500">
+              <span class={product.stock === 'In Stock' ? 'text-green-600' : 'text-orange-600'}>● {product.stock}</span>
+              <span>| MOQ {product.moq}</span>
+            </div>
+            <a href={SITE.whatsappLink + '?text=Hi, I am interested in ' + encodeURIComponent(product.name) + ' (' + product.id + ')'} target="_blank" class="mt-3 block w-full bg-[var(--color-whatsapp)] text-white text-center py-2 rounded-lg text-sm font-semibold hover:bg-green-600 transition-colors">
+              Get Quote via WhatsApp
+            </a>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- SEO Content -->
+    <section class="max-w-4xl mx-auto mb-12">
+      <h2 class="text-2xl font-bold text-[var(--color-primary)] mb-4">Why Choose Our Seamless Leggings?</h2>
+      <p class="text-gray-600 mb-4">
+        Our seamless leggings are manufactured using advanced circular knitting technology
+        from our Hefei factory. Unlike traditional cut-and-sew activewear, seamless
+        construction eliminates side seams for ultimate comfort and durability.
+      </p>
+      <h3 class="text-xl font-bold text-[var(--color-primary)] mb-3 mt-8">Key Features</h3>
+      <ul class="list-disc pl-6 text-gray-600 space-y-1">
+        <li><strong>Buttery Soft Fabric:</strong> 75% Nylon, 25% Spandex blend</li>
+        <li><strong>Squat-Proof:</strong> Tested for opacity at full stretch</li>
+        <li><strong>Moisture-Wicking:</strong> Quick-dry technology for intense workouts</li>
+        <li><strong>4-Way Stretch:</strong> Maximum flexibility and shape retention</li>
+      </ul>
+      <h3 class="text-xl font-bold text-[var(--color-primary)] mb-3 mt-8">Custom Branding Options</h3>
+      <p class="text-gray-600">All seamless leggings can be customized with your brand logo using heat transfer labels, silicone logo patches, woven labels, or embroidered logos.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-[var(--color-primary)] text-white rounded-2xl p-8 text-center">
+      <h2 class="text-2xl font-bold mb-4">Ready to Order Seamless Leggings?</h2>
+      <p class="mb-6">Get instant quote via WhatsApp. Response within 30 minutes during business hours.</p>
+      <a href={SITE.whatsappLink + '?text=Hi, I am interested in wholesale seamless leggings'} target="_blank" class="inline-flex items-center gap-2 bg-[var(--color-whatsapp)] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-600 transition-colors">
+        WhatsApp Us Now
+      </a>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,271 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import RelatedResources from "../components/RelatedResources.astro";
+import { SITE } from "../data/site";
+
+const stats = [
+  { value: '12+', label: 'Years Experience' },
+  { value: '100,000+', label: 'Monthly Capacity' },
+  { value: '50,000+', label: 'Ready Stock' },
+  { value: '50+', label: 'Export Countries' },
+  { value: '200+', label: 'Brand Partners' },
+];
+
+const values = [
+  { icon: '🎯', title: 'Quality First', desc: 'Every batch is QC-inspected. We reject 3% of production that does not meet our AQL 2.5 standard.' },
+  { icon: '🤝', title: 'Transparent Pricing', desc: 'Factory-direct pricing. No hidden fees. You see exactly what you pay, from material to shipping.' },
+  { icon: '⚡', title: 'Speed to Market', desc: '7-15 day production. 3-7 day express shipping. Get your inventory before peak season hits.' },
+  { icon: '🌍', title: 'Global Compliance', desc: 'OEKO-TEX 100, CPSIA, REACH certified. Ship confidently to US, EU, UK, Australia and Canada.' },
+];
+
+const milestones = [
+  { year: '2012', event: 'Founded in Guangzhou with 3 sewing lines and a vision for quality activewear manufacturing.' },
+  { year: '2015', event: 'Expanded to 12 production lines. First OEKO-TEX certification. Began serving US boutique brands.' },
+  { year: '2018', event: 'Launched seamless activewear line. Monthly capacity reached 50,000 pieces. Entered European market.' },
+  { year: '2021', event: 'Reached 100K+ monthly pieces. Added 5 new fabric technologies including recycled nylon.' },
+  { year: '2024', event: 'Serving 200+ active retail partners across 50+ countries. Launched wholesale B2B platform.' },
+];
+
+const factorySections = [
+  { 
+    title: 'Cutting Workshop', 
+    image: '/images/about/factory-01.webp',
+    desc: 'Automated fabric cutting with precision laser systems. Capacity: 50,000 pieces per day.'
+  },
+  { 
+    title: 'Sewing Workshop', 
+    image: '/images/about/factory-02.webp',
+    desc: '120+ industrial sewing machines operated by skilled technicians. 4-way stretch specialists.'
+  },
+  { 
+    title: 'QC Department', 
+    image: '/images/about/factory-03.webp',
+    desc: 'AQL 2.5 inspection standard. Every batch undergoes 3-step quality control before shipping.'
+  },
+];
+
+const warehouseSections = [
+  { 
+    title: 'Finished Goods Warehouse', 
+    image: '/images/about/warehouse-01.webp',
+    desc: '50,000+ pcs ready stock. Same-day dispatch for in-stock items.'
+  },
+  { 
+    title: 'Raw Materials Storage', 
+    image: '/images/about/warehouse-02.webp',
+    desc: 'Premium nylon-spandex fabrics from certified suppliers. 30+ colors in stock.'
+  },
+  { 
+    title: 'Packing & Shipping', 
+    image: '/images/about/warehouse-03.webp',
+    desc: 'Custom packaging, FNSKU labeling, and blind dropshipping available.'
+  },
+];
+
+const teamSections = [
+  { 
+    title: 'Business Team', 
+    image: '/images/about/team-01.webp',
+    desc: 'Dedicated account managers for Amazon, TikTok Shop, and Shopify sellers.'
+  },
+  { 
+    title: 'Production Management', 
+    image: '/images/about/team-02.webp',
+    desc: 'Experienced factory supervisors ensuring on-time delivery and quality consistency.'
+  },
+];
+---
+
+<BaseLayout 
+  title="About Us | YogaBulk - Wholesale Activewear Factory" 
+  description="YogaBulk is a leading wholesale activewear manufacturer with 12+ years experience, 100,000+ monthly capacity, serving 200+ brand partners across 50+ countries. Factory-direct pricing, low MOQ 30pcs."
+  canonicalUrl="/about"
+>
+  <main class="max-w-6xl mx-auto px-4 py-12">
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">About YogaBulk</h1>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+        Factory-direct activewear wholesale. 12+ years of manufacturing excellence. 
+        100,000+ pieces monthly capacity. Trusted by 200+ brands across 50+ countries.
+      </p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="mb-16">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        {stats.map(s => (
+          <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow">
+            <div class="text-3xl font-bold text-blue-600 mb-1">{s.value}</div>
+            <div class="text-sm text-gray-600 font-medium">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Factory Tour Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 text-gray-900">Inside Our Factory</h2>
+      <p class="text-gray-600 mb-8">Take a virtual tour of our manufacturing facility</p>
+      
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        {factorySections.map(section => (
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div class="aspect-video bg-gray-100">
+              <img 
+                src={section.image} 
+                alt={section.title}
+                class="w-full h-full object-cover"
+                loading="lazy"
+               
+              />
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-lg text-gray-900 mb-2">{section.title}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{section.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Warehouse Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 text-gray-900">Our Warehouse</h2>
+      <p class="text-gray-600 mb-8">Modern logistics facility for fast order fulfillment</p>
+      
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        {warehouseSections.map(section => (
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div class="aspect-video bg-gray-100">
+              <img 
+                src={section.image} 
+                alt={section.title}
+                class="w-full h-full object-cover"
+                loading="lazy"
+               
+              />
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-lg text-gray-900 mb-2">{section.title}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{section.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 text-gray-900">Our Team</h2>
+      <p class="text-gray-600 mb-8">Professional team dedicated to your success</p>
+      
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        {teamSections.map(section => (
+          <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+            <div class="aspect-video bg-gray-100">
+              <img 
+                src={section.image} 
+                alt={section.title}
+                class="w-full h-full object-cover"
+                loading="lazy"
+               
+              />
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-lg text-gray-900 mb-2">{section.title}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{section.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900">Our Values</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {values.map(v => (
+          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:border-blue-300 transition-colors">
+            <div class="text-3xl mb-3">{v.icon}</div>
+            <h3 class="font-bold text-lg text-gray-900 mb-2">{v.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-8 text-gray-900">Our Story</h2>
+      <div class="space-y-6">
+        {milestones.map(m => (
+          <div class="flex gap-6 items-start">
+            <div class="font-bold text-blue-600 text-xl w-20 shrink-0 bg-blue-50 rounded-lg py-2 text-center">{m.year}</div>
+            <div class="text-gray-700 leading-relaxed pt-1">{m.event}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-2xl p-8 md:p-12 text-center mb-16">
+      <h2 class="text-3xl font-bold mb-4">Ready to Partner?</h2>
+      <p class="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+        Get factory-direct pricing on your first order. MOQ starts at 30 pieces per style. 
+        Join 200+ successful brands already working with us.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/contact" 
+          class="inline-block bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition shadow-lg"
+        >
+          Contact Us
+        </a>
+        <a 
+          href="/products/" 
+          class="inline-block bg-blue-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-400 transition border-2 border-blue-400"
+        >
+          Browse Products
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Related Resources -->
+  <RelatedResources currentPage="about" />
+
+  <!-- About Page Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About YogaBulk - Wholesale Activewear Factory",
+      "description": "YogaBulk is a leading wholesale activewear manufacturer with 12+ years experience, 100,000+ monthly capacity, serving 200+ brand partners across 50+ countries.",
+      "url": "https://yogabulk-backup.pages.dev/about",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "YogaBulk",
+        "alternateName": "Wholesale Yoga",
+        "url": "https://yogabulk-backup.pages.dev",
+        "logo": "https://yogabulk-backup.pages.dev/favicon.svg",
+        "foundingDate": "2012",
+        "description": "Factory-direct wholesale activewear manufacturer specializing in seamless leggings, sports bras, and yoga sets for Amazon FBA, TikTok Shop, and Shopify sellers.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Hefei",
+          "addressRegion": "Anhui",
+          "addressCountry": "CN"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Sales",
+          "availableLanguage": ["English", "Chinese"]
+        },
+        "sameAs": [
+          "https://wa.me/8615556105390"
+        ]
+      }
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,14 @@
+# Cloudflare Pages configuration
+name = "wholesale-yoga"
+compatibility_date = "2024-12-01"
+
+[build]
+command = "npm run build"
+cwd = "."
+watch_dirs = ["src"]
+
+[build.upload]
+dir = "dist"
+
+[pages]
+pages_build_output_dir = "dist"

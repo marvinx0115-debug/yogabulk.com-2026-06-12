@@ -1,0 +1,363 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedResources from "../../components/RelatedResources.astro";
+import { allInventory, getInventoryByCategory } from "../../data/inventory";
+
+export function getStaticPaths() {
+  return allInventory.map(inv => ({
+    params: { category: inv.category },
+    props: { inventory: inv }
+  }));
+}
+
+const { inventory } = Astro.props;
+const { category } = Astro.params;
+
+// Map inventory category slugs to corresponding products category slugs
+const inventoryToProductMap: Record<string, string> = {
+  'seamless-leggings': 'seamless-leggings',
+  'sports-bras': 'sports-bra',
+  'matching-sets': 'matching-sets',
+};
+const productCategory = inventoryToProductMap[category];
+const canonicalPath = productCategory ? `/products/${productCategory}/` : undefined;
+
+const title = `${inventory.title} | Real-Time Stock`;
+const description = `${inventory.totalStock.toLocaleString()}+ ${inventory.title.toLowerCase()} in stock. ${inventory.items.length} styles available. MOQ ${inventory.items[0]?.moq || 30}pcs. Mix colors & sizes. Ships in 3-7 days. Browse real-time inventory now.`;
+
+// Calculate stats
+const totalColors = [...new Set(inventory.items.flatMap(i => i.colors))].length;
+const totalSizes = [...new Set(inventory.items.flatMap(i => i.sizes))].length;
+const avgPrice = (inventory.items.reduce((sum, i) => sum + (i.priceRange.min + i.priceRange.max) / 2, 0) / inventory.items.length).toFixed(2);
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath}>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-6">
+      <a href="/" class="hover:text-blue-600">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/inventory/" class="hover:text-blue-600">Inventory</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-900">{inventory.title.replace(" Inventory", "")}</span>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="mb-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+            {inventory.title}
+          </h1>
+          <p class="text-xl text-gray-600 max-w-2xl">
+            {inventory.description}
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
+            ✅ In Stock
+          </span>
+          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+            🚚 Ships 3-7 Days
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl p-6 mb-12">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+        <div>
+          <div class="text-3xl font-bold">{inventory.totalStock.toLocaleString()}</div>
+          <div class="text-blue-100 text-sm">Total Pieces</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold">{inventory.items.length}</div>
+          <div class="text-blue-100 text-sm">Styles</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold">{totalColors}+</div>
+          <div class="text-blue-100 text-sm">Colors</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold">{totalSizes}</div>
+          <div class="text-blue-100 text-sm">Sizes</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold">${avgPrice}</div>
+          <div class="text-blue-100 text-sm">Avg Price</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-8">
+      <div class="flex flex-wrap items-center gap-4">
+        <span class="font-medium text-gray-700">Filter by:</span>
+        <select id="colorFilter" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="">All Colors</option>
+          {[...new Set(inventory.items.flatMap(i => i.colors))].sort().map(color => (
+            <option value={color}>{color}</option>
+          ))}
+        </select>
+        <select id="sizeFilter" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="">All Sizes</option>
+          {[...new Set(inventory.items.flatMap(i => i.sizes))].sort().map(size => (
+            <option value={size}>{size}</option>
+          ))}
+        </select>
+        <select id="stockFilter" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          <option value="">Stock Level</option>
+          <option value="high">High (2000+)</option>
+          <option value="medium">Medium (1000-2000)</option>
+          <option value="low">Low (&lt;1000)</option>
+        </select>
+        <button id="resetFilters" class="ml-auto text-blue-600 hover:text-blue-800 text-sm font-medium">
+          Reset Filters
+        </button>
+      </div>
+    </section>
+
+    <!-- Inventory Grid -->
+    <section class="mb-12">
+      <div id="inventoryGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {inventory.items.map((item) => (
+          <div 
+            class="inventory-item bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+            data-colors={item.colors.join(",")}
+            data-sizes={item.sizes.join(",")}
+            data-stock={item.stock}
+          >
+            {/* Stock Badge */}
+            <div class="relative">
+              <div class={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold z-10 ${
+                item.stock > 2000 ? "bg-green-500 text-white" : 
+                item.stock > 1000 ? "bg-yellow-500 text-white" : "bg-orange-500 text-white"
+              }`}>
+                {item.stock > 2000 ? "High Stock" : item.stock > 1000 ? "Good Stock" : "Limited"} • {item.stock} pcs
+              </div>
+              {item.tags.includes("bestseller") && (
+                <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold z-10">
+                  🔥 Bestseller
+                </div>
+              )}
+              {item.tags.includes("viral") && (
+                <div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-bold z-10">
+                  📱 Viral
+                </div>
+              )}
+              <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                <img 
+                  src={item.image} 
+                  alt={item.name}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  onerror="this.src='/images/placeholder.webp';this.onerror=null;"
+                />
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{item.name}</h3>
+              <p class="text-sm text-gray-500 mb-3">SKU: {item.sku}</p>
+              
+              {/* Colors */}
+              <div class="mb-3">
+                <span class="text-xs text-gray-500 uppercase tracking-wide">Colors</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                  {item.colors.slice(0, 5).map(color => (
+                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">{color}</span>
+                  ))}
+                  {item.colors.length > 5 && (
+                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">+{item.colors.length - 5}</span>
+                  )}
+                </div>
+              </div>
+              
+              {/* Sizes */}
+              <div class="mb-4">
+                <span class="text-xs text-gray-500 uppercase tracking-wide">Sizes</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                  {item.sizes.map(size => (
+                    <span class="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded font-medium">{size}</span>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Price & MOQ */}
+              <div class="flex items-center justify-between mb-4 pt-4 border-t border-gray-100">
+                <div>
+                  <span class="text-2xl font-bold text-blue-600">${item.priceRange.min.toFixed(2)}</span>
+                  <span class="text-gray-400"> - ${item.priceRange.max.toFixed(2)}</span>
+                  <span class="text-xs text-gray-500 block">per piece</span>
+                </div>
+                <div class="text-right">
+                  <span class="text-sm font-medium text-gray-900">MOQ: {item.moq}pcs</span>
+                  <span class="text-xs text-gray-500 block">Ships: {item.shippingDays} days</span>
+                </div>
+              </div>
+              
+              {/* CTA */}
+              <a 
+                href={`https://wa.me/8615556105390?text=Hi,%20I'm%20interested%20in%20${encodeURIComponent(item.name)}%20(${item.sku})`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block w-full bg-green-500 text-white text-center py-3 rounded-xl font-semibold hover:bg-green-600 transition"
+              >
+                💬 Get Quote on WhatsApp
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Bulk Order Info -->
+    <section class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-12">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl font-bold mb-4 text-gray-900">Bulk Order Discounts</h2>
+          <p class="text-gray-600 mb-6">
+            The more you order, the more you save. Mix and match styles within the same category for even better pricing.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">50</span>
+              <span>5% off total order</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">100</span>
+              <span>10% off total order</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">300</span>
+              <span>15% off total order</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">500+</span>
+              <span>20% off total order</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-4">Why Order from Stock?</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start gap-2">
+              <span class="text-green-500">✓</span>
+              <span><strong>Fast Shipping:</strong> Ships in 3-7 days vs 2-3 weeks for custom orders</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500">✓</span>
+              <span><strong>Lower MOQ:</strong> Start with just 20-30 pieces per style</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500">✓</span>
+              <span><strong>Mix & Match:</strong> Combine colors and sizes to meet MOQ</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500">✓</span>
+              <span><strong>Test Market:</strong> Try different styles before committing to large orders</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500">✓</span>
+              <span><strong>No Risk:</strong> See exactly what you're getting before you buy</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center">
+      <h2 class="text-2xl font-bold mb-4 text-gray-900">Ready to Place an Order?</h2>
+      <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+        Contact us on WhatsApp with your selection. We'll confirm availability and send you a detailed quote within 30 minutes.
+      </p>
+      <a 
+        href={`https://wa.me/8615556105390?text=Hi,%20I'm%20interested%20in%20${encodeURIComponent(inventory.title)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block bg-green-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-600 transition shadow-lg text-lg"
+      >
+        💬 Get Quote on WhatsApp
+      </a>
+    </section>
+  </main>
+
+  <RelatedResources currentPage="inventory" />
+
+  <!-- Dataset Schema -->
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": inventory.title,
+      "description": inventory.description,
+      "url": `https://yogabulk-backup.pages.dev/inventory/${category}/`,
+      "creator": {
+        "@type": "Organization",
+        "name": "YogaBulk"
+      },
+      "datePublished": "2024-01-01",
+      "license": "https://yogabulk-backup.pages.dev/terms",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": `https://yogabulk-backup.pages.dev/inventory/${category}/`,
+        "encodingFormat": "HTML"
+      },
+      "variableMeasured": [
+        "Stock Quantity",
+        "Available Colors", 
+        "Available Sizes",
+        "Price Range",
+        "Minimum Order Quantity"
+      ]
+    })}
+  </script>
+
+  <!-- Filter Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const colorFilter = document.getElementById('colorFilter');
+      const sizeFilter = document.getElementById('sizeFilter');
+      const stockFilter = document.getElementById('stockFilter');
+      const resetBtn = document.getElementById('resetFilters');
+      const items = document.querySelectorAll('.inventory-item');
+
+      function filterItems() {
+        const color = colorFilter?.value || '';
+        const size = sizeFilter?.value || '';
+        const stock = stockFilter?.value || '';
+
+        items.forEach(item => {
+          const itemColors = item.dataset.colors || '';
+          const itemSizes = item.dataset.sizes || '';
+          const itemStock = parseInt(item.dataset.stock || '0');
+
+          let show = true;
+
+          if (color && !itemColors.includes(color)) show = false;
+          if (size && !itemSizes.includes(size)) show = false;
+          if (stock) {
+            if (stock === 'high' && itemStock <= 2000) show = false;
+            if (stock === 'medium' && (itemStock <= 1000 || itemStock > 2000)) show = false;
+            if (stock === 'low' && itemStock >= 1000) show = false;
+          }
+
+          item.style.display = show ? 'block' : 'none';
+        });
+      }
+
+      colorFilter?.addEventListener('change', filterItems);
+      sizeFilter?.addEventListener('change', filterItems);
+      stockFilter?.addEventListener('change', filterItems);
+      
+      resetBtn?.addEventListener('click', function() {
+        colorFilter.value = '';
+        sizeFilter.value = '';
+        stockFilter.value = '';
+        filterItems();
+      });
+    });
+  </script>
+</BaseLayout>

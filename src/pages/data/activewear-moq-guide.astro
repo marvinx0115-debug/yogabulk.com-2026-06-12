@@ -1,0 +1,308 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedResources from "../../components/RelatedResources.astro";
+import { moqData, moqByBuyerType, customizationMoq } from "../../data/moq";
+
+const title = "MOQ Guide 2025 | Minimum Order Quantity Explained";
+const description = "Complete MOQ guide for wholesale activewear. Stock MOQ 30pcs, Custom MOQ 100pcs, Custom Design 300pcs. Mix colors & sizes allowed. Learn how to optimize your order.";
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Hero -->
+    <section class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        MOQ Guide 2025
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Understanding Minimum Order Quantities (MOQ) for wholesale activewear. 
+        Start small, scale smart.
+      </p>
+    </section>
+
+    <!-- MOQ Overview Cards -->
+    <section class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl p-8 text-center">
+        <div class="text-5xl font-bold mb-2">30</div>
+        <div class="text-xl font-semibold mb-2">Stock MOQ</div>
+        <div class="text-blue-100">Per style from ready inventory</div>
+        <div class="mt-4 text-sm bg-blue-400 bg-opacity-30 rounded-lg p-3">
+          ✅ Mix colors & sizes<br/>
+          ✅ Ships in 3-7 days<br/>
+          ✅ Lowest risk
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl p-8 text-center">
+        <div class="text-5xl font-bold mb-2">100</div>
+        <div class="text-xl font-semibold mb-2">Custom MOQ</div>
+        <div class="text-purple-100">Custom colors on existing styles</div>
+        <div class="mt-4 text-sm bg-purple-400 bg-opacity-30 rounded-lg p-3">
+          🎨 Custom colors<br/>
+          📅 2-3 week lead time<br/>
+          🏷️ Add your branding
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-2xl p-8 text-center">
+        <div class="text-5xl font-bold mb-2">300</div>
+        <div class="text-xl font-semibold mb-2">Custom Design</div>
+        <div class="text-orange-100">Fully custom product development</div>
+        <div class="mt-4 text-sm bg-orange-400 bg-opacity-30 rounded-lg p-3">
+          ✏️ Your design<br/>
+          📅 4-6 week lead time<br/>
+          🔒 Exclusive product
+        </div>
+      </div>
+    </section>
+
+    <!-- MOQ by Product Type -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">MOQ by Product Type</h2>
+      <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Product Type</th>
+                <th class="px-6 py-4 text-center text-sm font-semibold text-gray-900">Stock MOQ</th>
+                <th class="px-6 py-4 text-center text-sm font-semibold text-gray-900">Custom MOQ</th>
+                <th class="px-6 py-4 text-center text-sm font-semibold text-gray-900">Custom Design</th>
+                <th class="px-6 py-4 text-center text-sm font-semibold text-gray-900">Sample Price</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              {moqData.map((item) => (
+                <tr class="hover:bg-gray-50">
+                  <td class="px-6 py-4">
+                    <div class="font-medium text-gray-900">{item.productType}</div>
+                    <div class="text-sm text-gray-500">{item.notes}</div>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-bold">
+                      {item.stockMoq} pcs
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-bold">
+                      {item.customMoq} pcs
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="inline-block bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-bold">
+                      {item.customDesignMoq} pcs
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="font-medium text-gray-900">${item.samplePrice}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOQ by Buyer Type -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Recommended MOQ by Buyer Type</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {moqByBuyerType.map((buyer) => (
+          <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+            <h3 class="text-lg font-bold text-gray-900 mb-3">{buyer.buyerType}</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-600">Recommended MOQ</span>
+                <span class="font-bold text-blue-600">{buyer.recommendedMoq}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-600">Mix Colors</span>
+                <span class={buyer.mixColors ? "text-green-600" : "text-red-600"}>
+                  {buyer.mixColors ? "✓ Yes" : "✗ No"}
+                </span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-600">Mix Sizes</span>
+                <span class={buyer.mixSizes ? "text-green-600" : "text-red-600"}>
+                  {buyer.mixSizes ? "✓ Yes" : "✗ No"}
+                </span>
+              </div>
+              <div class="pt-3 border-t border-gray-100">
+                <span class="text-xs text-gray-500 uppercase tracking-wide">Payment Terms</span>
+                <p class="text-sm text-gray-700 mt-1">{buyer.paymentTerms}</p>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-3">
+                <p class="text-sm text-gray-600">{buyer.notes}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Customization MOQ -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Customization MOQ & Pricing</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {Object.entries(customizationMoq).map(([key, custom]) => (
+          <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">{custom.name}</h3>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-600">MOQ</span>
+                <span class="font-bold text-blue-600">{custom.moq} pcs</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-600">Price per piece</span>
+                <span class="font-bold text-gray-900">${custom.pricePerPiece}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-600">Setup fee</span>
+                <span class="font-medium text-gray-900">${custom.setupFee}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-gray-600">Lead time</span>
+                <span class="font-medium text-gray-900">{custom.leadTime}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Mix & Match Rules -->
+    <section class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-16">
+      <h2 class="text-2xl font-bold mb-6 text-gray-900">Mix & Match Rules</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-3">✅ What's Allowed</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-green-600">✓</span>
+              <span>Mix different colors within the same style</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-600">✓</span>
+              <span>Mix different sizes within the same style</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-600">✓</span>
+              <span>Combine multiple styles to reach volume discounts</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-600">✓</span>
+              <span>Split MOQ across 2-3 color variants</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-3">❌ What's Not Allowed</h3>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2">
+              <span class="text-red-600">✗</span>
+              <span>Mix completely different products (leggings + bras)</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-600">✗</span>
+              <span>Order less than 10pcs per color/size combination</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-600">✗</span>
+              <span>Split custom color MOQ across multiple colors</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-600">✗</span>
+              <span>Order samples at wholesale price</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 bg-white rounded-xl p-4">
+        <p class="text-sm text-gray-600">
+          <strong>Example:</strong> You want 30pcs of Seamless Ribbed Leggings. You can order: 
+          10pcs Black (S, M, L) + 10pcs Mocha (S, M, L) + 10pcs Olive (S, M, L) = 30pcs total. 
+          This meets the MOQ while giving you variety.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-2">Can I order less than the MOQ?</h3>
+          <p class="text-sm text-gray-600">For stock items, 30pcs is the minimum. However, you can order samples at retail price to check quality before committing to wholesale.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-2">Do you offer dropshipping with no MOQ?</h3>
+          <p class="text-sm text-gray-600">Yes! We have a dropshipping program for Shopify sellers. No MOQ, we ship directly to your customers with your branding.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-2">What if my preferred color is out of stock?</h3>
+          <p class="text-sm text-gray-600">You can pre-order with 2-3 week lead time, or choose from in-stock colors. We recommend having 2-3 color options ready.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-2">Can I negotiate MOQ for large orders?</h3>
+          <p class="text-sm text-gray-600">For orders over 1000pcs, we can discuss custom terms. Contact us on WhatsApp to discuss your specific needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gray-900 text-white rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Order?</h2>
+      <p class="text-lg mb-6 text-gray-300 max-w-2xl mx-auto">
+        Start with our 30pcs MOQ and scale as your business grows. 
+        Contact us for personalized recommendations based on your business type.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/8615556105390?text=Hi,%20I'm%20ready%20to%20place%20my%20first%20order"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-green-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-600 transition shadow-lg"
+        >
+          💬 Start Your Order
+        </a>
+        <a 
+          href="/inventory/" 
+          class="inline-block bg-gray-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-600 transition"
+        >
+          Browse Inventory
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <RelatedResources currentPage="data" />
+
+  <!-- Dataset Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "Wholesale Activewear MOQ Guide 2025",
+      "description": "Complete minimum order quantity (MOQ) guide for wholesale activewear. Stock MOQ 30pcs, custom MOQ 100pcs, custom design 300pcs. Includes MOQ by product type and buyer type.",
+      "url": "https://yogabulk-backup.pages.dev/data/activewear-moq-guide/",
+      "creator": {
+        "@type": "Organization",
+        "name": "YogaBulk"
+      },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-06-01",
+      "license": "https://yogabulk-backup.pages.dev/terms",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://yogabulk-backup.pages.dev/data/activewear-moq-guide/",
+        "encodingFormat": "HTML"
+      },
+      "variableMeasured": [
+        "Stock MOQ",
+        "Custom MOQ",
+        "Custom Design MOQ",
+        "Sample Price",
+        "Lead Time"
+      ]
+    }
+  </script>
+</BaseLayout>

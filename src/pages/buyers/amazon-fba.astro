@@ -1,0 +1,352 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedResources from "../../components/RelatedResources.astro";
+import InternalLinks from "../../components/InternalLinks.astro";
+import { amazonCases } from "../../data/caseStudies";
+import { allPricing } from "../../data/pricing";
+
+const title = "Amazon FBA Wholesale Activewear | Supplier Guide 2025";
+const description = "Wholesale activewear for Amazon FBA sellers. Low MOQ 30pcs, FNSKU labeling, custom packaging. 200+ FBA sellers trust YogaBulk. Start with $500 budget. Ships to Amazon warehouses worldwide.";
+
+const amazonPricing = allPricing[0]; // Seamless leggings pricing
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Hero -->
+    <section class="text-center mb-12">
+      <div class="inline-block bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+        🚀 #1 Choice for Amazon FBA Sellers
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        Amazon FBA Wholesale Activewear
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Factory-direct activewear with FNSKU labeling, custom packaging, and fast turnaround. 
+        200+ FBA sellers trust YogaBulk for consistent quality and reliable supply.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
+          ✅ FNSKU Labeling
+        </span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+          📦 Custom Packaging
+        </span>
+        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
+          🚚 Ships to FBA
+        </span>
+      </div>
+    </section>
+
+    <!-- Why Amazon Sellers Choose Us -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Why Amazon FBA Sellers Choose YogaBulk</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🏷️</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">FNSKU Labeling</h3>
+          <p class="text-gray-600 text-sm">We apply Amazon FNSKU labels to every unit. Your products arrive at FBA warehouses ready for immediate check-in.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📦</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Custom Packaging</h3>
+          <p class="text-gray-600 text-sm">Poly bags, inserts, and branded packaging that meets Amazon's requirements. Protect your products and build your brand.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Fast Restocking</h3>
+          <p class="text-gray-600 text-sm">3-7 day shipping means you can restock before running out. Never lose the Buy Box due to stockouts.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">✅</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Consistent Quality</h3>
+          <p class="text-gray-600 text-sm">Batch-to-batch consistency is crucial for FBA. Our AQL 2.5 inspection ensures every unit meets your standards.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📸</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Product Photos</h3>
+          <p class="text-gray-600 text-sm">High-quality product images provided. Use them for your Amazon listings to save on photography costs.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">💰</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">High Margins</h3>
+          <p class="text-gray-600 text-sm">Factory-direct pricing means 45-60% margins after Amazon fees. Competitive pricing helps you win the Buy Box.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Startup Budget Calculator -->
+    <section class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-16">
+      <h2 class="text-2xl font-bold mb-6 text-gray-900">Amazon FBA Startup Budget</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">First Order Breakdown (100pcs)</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">Product Cost (100pcs @ $6.12)</span>
+              <span class="font-medium">$612</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">FNSKU Labeling</span>
+              <span class="font-medium">$25</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">Custom Poly Bags</span>
+              <span class="font-medium">$30</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">Shipping to FBA (USA)</span>
+              <span class="font-medium">$85</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">Customs/Duties</span>
+              <span class="font-medium">$45</span>
+            </div>
+            <div class="flex justify-between items-center py-3 font-bold text-lg">
+              <span class="text-gray-900">Total First Order</span>
+              <span class="text-blue-600">$797</span>
+            </div>
+          </div>
+          <div class="mt-4 bg-green-100 rounded-lg p-4">
+            <div class="flex justify-between items-center">
+              <span class="text-green-800 font-medium">Expected Revenue (100pcs @ $18)</span>
+              <span class="text-green-800 font-bold">$1,800</span>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-green-800 font-medium">Net Profit (after Amazon fees ~30%)</span>
+              <span class="text-green-800 font-bold">$463</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-4">Scaling Budget (500pcs)</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">Product Cost (500pcs @ $5.44)</span>
+              <span class="font-medium">$2,720</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">FNSKU Labeling</span>
+              <span class="font-medium">$50</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">Custom Packaging</span>
+              <span class="font-medium">$80</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">Shipping to FBA (USA)</span>
+              <span class="font-medium">$180</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+              <span class="text-gray-600">Customs/Duties</span>
+              <span class="font-medium">$150</span>
+            </div>
+            <div class="flex justify-between items-center py-3 font-bold text-lg">
+              <span class="text-gray-900">Total Order</span>
+              <span class="text-blue-600">$3,180</span>
+            </div>
+          </div>
+          <div class="mt-4 bg-green-100 rounded-lg p-4">
+            <div class="flex justify-between items-center">
+              <span class="text-green-800 font-medium">Expected Revenue (500pcs @ $18)</span>
+              <span class="text-green-800 font-bold">$9,000</span>
+            </div>
+            <div class="flex justify-between items-center mt-2">
+              <span class="text-green-800 font-medium">Net Profit (after Amazon fees ~30%)</span>
+              <span class="text-green-800 font-bold">$3,120</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Sellers for Amazon -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Best Sellers for Amazon FBA</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+          <div class="aspect-square bg-gray-100"></div>
+          <div class="p-4">
+            <div class="text-xs text-red-600 font-medium mb-1">🔥 Bestseller</div>
+            <h3 class="font-bold text-gray-900 mb-1">Seamless Ribbed Leggings</h3>
+            <p class="text-sm text-gray-600 mb-2">3,245 in stock • 4.8★</p>
+            <div class="flex justify-between items-center">
+              <span class="text-blue-600 font-bold">$4.50-6.80</span>
+              <span class="text-xs text-gray-500">MOQ 30</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+          <div class="aspect-square bg-gray-100"></div>
+          <div class="p-4">
+            <div class="text-xs text-purple-600 font-medium mb-1">📱 Viral</div>
+            <h3 class="font-bold text-gray-900 mb-1">Scrunch Butt Leggings</h3>
+            <p class="text-sm text-gray-600 mb-2">2,890 in stock • 4.7★</p>
+            <div class="flex justify-between items-center">
+              <span class="text-blue-600 font-bold">$5.20-7.50</span>
+              <span class="text-xs text-gray-500">MOQ 30</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+          <div class="aspect-square bg-gray-100"></div>
+          <div class="p-4">
+            <div class="text-xs text-green-600 font-medium mb-1">⭐ High Margin</div>
+            <h3 class="font-bold text-gray-900 mb-1">Matching Sets</h3>
+            <p class="text-sm text-gray-600 mb-2">2,134 in stock • 4.9★</p>
+            <div class="flex justify-between items-center">
+              <span class="text-blue-600 font-bold">$8.50-12.00</span>
+              <span class="text-xs text-gray-500">MOQ 20</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+          <div class="aspect-square bg-gray-100"></div>
+          <div class="p-4">
+            <div class="text-xs text-blue-600 font-medium mb-1">📈 Trending</div>
+            <h3 class="font-bold text-gray-900 mb-1">Flare Yoga Pants</h3>
+            <p class="text-sm text-gray-600 mb-2">1,567 in stock • 4.6★</p>
+            <div class="flex justify-between items-center">
+              <span class="text-blue-600 font-bold">$6.50-9.50</span>
+              <span class="text-xs text-gray-500">MOQ 30</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Amazon FBA Success Stories</h2>
+      <div class="space-y-8">
+        {amazonCases.map((story) => (
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="grid md:grid-cols-3 gap-0">
+              <div class="bg-gradient-to-br from-blue-500 to-purple-600 text-white p-8 flex flex-col justify-center">
+                <div class="text-4xl font-bold mb-2">{story.currentVolume}</div>
+                <div class="text-blue-100 mb-4">Current Volume</div>
+                <div class="text-sm text-blue-100">Started: {story.startedWith}</div>
+                <div class="text-sm text-blue-100">Timeline: {story.timeline}</div>
+              </div>
+              <div class="md:col-span-2 p-8">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                  <div>
+                    <h3 class="font-bold text-gray-900">{story.name}</h3>
+                    <p class="text-sm text-gray-600">{story.businessType} • {story.location}</p>
+                  </div>
+                </div>
+                <blockquote class="text-gray-700 italic mb-4">"{story.testimonial}"</blockquote>
+                <div class="grid grid-cols-2 gap-4">
+                  {story.results.slice(0, 4).map((result) => (
+                    <div class="flex items-center gap-2">
+                      <span class="text-green-500">✓</span>
+                      <span class="text-sm text-gray-700">{result}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Start -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">How to Start Selling on Amazon FBA</h2>
+      <div class="grid md:grid-cols-5 gap-4">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+          <h3 class="font-bold text-gray-900 mb-2">Create Amazon Seller Account</h3>
+          <p class="text-sm text-gray-600">Sign up for Amazon Seller Central. Choose Professional plan ($39.99/month).</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+          <h3 class="font-bold text-gray-900 mb-2">Order Samples from YogaBulk</h3>
+          <p class="text-sm text-gray-600">Test 2-3 styles to verify quality and check Amazon's requirements.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+          <h3 class="font-bold text-gray-900 mb-2">Create Amazon Listings</h3>
+          <p class="text-sm text-gray-600">Use our product photos. Write SEO-optimized titles and descriptions.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+          <h3 class="font-bold text-gray-900 mb-2">Place Wholesale Order</h3>
+          <p class="text-sm text-gray-600">Order 100-300pcs with FNSKU labeling. We ship directly to FBA.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
+          <h3 class="font-bold text-gray-900 mb-2">Launch & Scale</h3>
+          <p class="text-sm text-gray-600">Use Amazon PPC to drive initial sales. Reorder based on velocity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl font-bold mb-4">Start Your Amazon FBA Journey</h2>
+      <p class="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+        Join 200+ successful Amazon sellers who trust YogaBulk. 
+        Start with just $500 and scale to 6 figures.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/8615556105390?text=Hi,%20I'm%20an%20Amazon%20FBA%20seller%20and%20want%20to%20learn%20more"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white text-orange-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition shadow-lg"
+        >
+          💬 Chat with FBA Specialist
+        </a>
+        <a 
+          href="/inventory/" 
+          class="inline-block bg-orange-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-orange-700 transition border-2 border-orange-400"
+        >
+          Browse Inventory
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <RelatedResources currentPage="buyer" />
+  <InternalLinks pageType="buyer" currentSlug="buyers/amazon-fba" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Amazon FBA Wholesale Activewear Supplier Guide 2025",
+      "description": "Complete guide for Amazon FBA sellers looking to source wholesale activewear. Includes startup budget, best sellers, and success stories.",
+      "url": "https://yogabulk-backup.pages.dev/buyers/amazon-fba/",
+      "author": {
+        "@type": "Organization",
+        "name": "YogaBulk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "YogaBulk",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yogabulk-backup.pages.dev/favicon.svg"
+        }
+      },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-06-01"
+    }
+  </script>
+</BaseLayout>

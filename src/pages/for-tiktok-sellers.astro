@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../data/site";
+
+const pageFaqs = [
+  { q: "How do I find out which styles are trending on TikTok right now?", a: "We update our trending styles weekly based on TikTok video views, affiliate product data, and Shopify order velocity. Ask us for our current Trending Now list - we have a 4-6 week head start on identifying the next viral style before it peaks on TikTok Shop." },
+  { q: "What is the minimum order quantity for dropshipping on TikTok Shop?", a: "Our MOQ for dropshipping starts at 10 pieces per style - perfect for testing viral products without large upfront investment. We offer blind shipping so your customers only see your brand name, not yogabulk." },
+  { q: "How fast can I get inventory for a viral TikTok video?", a: "For in-stock items, we ship within 24 hours via DHL/FedEx express (3-7 days worldwide). If you need urgent restocking after a viral video, we offer priority production at 7-10 days for out-of-stock styles. Express air freight adds 2-3 days." },
+  { q: "Do you provide TikTok-ready content and product videos?", a: "Yes! We provide free short-form product videos (15-30 seconds) optimized for TikTok and Instagram Reels. High-resolution photos and lifestyle shots are also included. You get full commercial usage rights for all content." },
+  { q: "Can I get custom logo products for my TikTok brand?", a: "Absolutely. We offer 4 logo techniques: Heat Transfer, Screen Printing, Silicone Patches, and Woven Labels. MOQ is 50 pieces per style. Turnaround is 7-10 days for production. Build your recognizable TikTok brand with professional custom activewear." },
+];
+
+const benefits = [
+  { icon: "🔥", title: "Trending Now List", desc: "Weekly updated TikTok trending styles based on real video views and affiliate data. Get ahead of the curve before styles go viral." },
+  { icon: "📱", title: "TikTok-Ready Content", desc: "Free short-form videos (15-30s), lifestyle photos, and product shots. Ready to post on TikTok, Instagram Reels, and YouTube Shorts." },
+  { icon: "🚀", title: "24h Express Shipping", desc: "In-stock items ship same day. When your video goes viral, we keep up with your order velocity. No missed sales due to stockouts." },
+  { icon: "🎨", title: "Low MOQ for Testing", desc: "Start with 10 pieces per style to test viral products. Scale up to 50-200 pieces when you find winners. No big upfront commitment needed." },
+];
+---
+<BaseLayout
+  title="Activewear for TikTok Shop Sellers"
+  description="TikTok trending wholesale activewear. Low MOQ 10pcs, 24h shipping, TikTok-ready videos included. Follow viral trends before they peak. Custom logo available."
+>
+  <section style="background:linear-gradient(135deg,#00f2ea 0%,#ff0050 100%);color:white;">
+    <div style="max-width:56rem;margin:0 auto;padding:4rem 1.5rem;text-align:center;">
+      <p style="color:rgba(255,255,255,0.8);font-weight:600;font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">For TikTok Sellers</p>
+      <h1 style="font-size:2.5rem;font-weight:800;margin-bottom:1rem;">Stock the Next Viral Style</h1>
+      <p style="color:rgba(255,255,255,0.9);max-width:42rem;margin:0 auto 1.5rem;font-size:1.1rem;">We track TikTok trends before they peak. Low MOQ, fast shipping, TikTok-ready videos included. Turn viral moments into consistent sales on TikTok Shop.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:white;padding:0.875rem 2rem;border-radius:9999px;font-weight:700;font-size:0.9rem;">Get Trending List</a>
+        <a href="/inventory" style="display:inline-flex;align-items:center;gap:0.5rem;border:2px solid rgba(255,255,255,0.4);color:white;padding:0.875rem 2rem;border-radius:9999px;font-weight:600;font-size:0.9rem;">View Inventory</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+    <h2 style="font-size:1.5rem;font-weight:800;color:var(--color-primary);text-align:center;margin-bottom:2rem;">Why TikTok Sellers Choose Us</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.5rem;">
+      {benefits.map(b => (
+        <div style="background:white;border:1px solid var(--color-border);border-radius:1rem;padding:1.5rem;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">{b.icon}</div>
+          <h3 style="font-size:1rem;font-weight:700;color:var(--color-primary);margin-bottom:0.5rem;">{b.title}</h3>
+          <p style="font-size:0.875rem;color:var(--color-text-light);line-height:1.6;">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div style="background:var(--color-secondary);">
+    <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+      <h2 style="font-size:1.5rem;font-weight:800;color:var(--color-primary);margin-bottom:1.5rem;text-align:center;">TikTok Seller FAQ</h2>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        {pageFaqs.map(faq => (
+          <details style="background:white;border:1px solid var(--color-border);border-radius:0.75rem;overflow:hidden;">
+            <summary style="display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;cursor:pointer;list-style:none;gap:1rem;">
+              <span style="font-weight:600;color:var(--color-text);font-size:0.9rem;">{faq.q}</span>
+              <svg style="width:1.25rem;height:1.25rem;color:var(--color-text-light);flex-shrink:0;transition:transform 0.2s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div style="padding:0 1.25rem 1.25rem;font-size:0.875rem;color:var(--color-text-light);line-height:1.7;border-top:1px solid var(--color-border);padding-top:0.75rem;">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+    <div style="background:linear-gradient(135deg,#00f2ea 0%,#ff0050 100%);border-radius:1.5rem;padding:2.5rem;text-align:center;color:white;">
+      <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:0.75rem;">Get This Week's Trending Styles</h2>
+      <p style="color:rgba(255,255,255,0.85);margin-bottom:1.5rem;font-size:0.9rem;">Ask us on WhatsApp for our live trending styles list - updated every Monday based on TikTok video performance data.</p>
+      <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:white;padding:1rem 2.5rem;border-radius:9999px;font-weight:700;font-size:1rem;">Get Trending List Now</a>
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+    })),
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE.url },
+      { "@type": "ListItem", "position": 2, "name": "For TikTok Sellers", "item": SITE.url + "/for-tiktok-sellers" },
+    ],
+  })} />
+</BaseLayout>

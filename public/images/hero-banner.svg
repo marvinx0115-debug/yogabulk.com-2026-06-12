@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <rect width="1200" height="600" fill="#1a1a1a"/>
+  <text x="600" y="260" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#f5f0eb" text-anchor="middle">WHOLESALE YOGA</text>
+  <text x="600" y="310" font-family="system-ui,sans-serif" font-size="16" fill="#a89282" text-anchor="middle">Ready To Ship Activewear Wholesale</text>
+  <rect x="470" y="340" width="260" height="50" rx="25" fill="#25d366"/>
+  <text x="600" y="372" font-family="system-ui,sans-serif" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">WhatsApp Inquiry →</text>
+</svg>

@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, WHATSAPP } from '../data/site';
+
+const region = {
+  name: 'Canada',
+  slug: 'wholesale-yoga-wear-canada',
+  title: 'Wholesale Yoga Wear Canada | Fast Shipping to Canada',
+  description: 'Wholesale activewear shipping to Canada. Low MOQ 30-50pcs, DHL/FedEx 5-10 day delivery, custom logo available. Trusted by Canadian sellers on Amazon, Shopify & TikTok Shop.',
+};
+---
+
+<BaseLayout title={region.title} description={region.description}>
+  <section class="py-16 sm:py-24 bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-bg-secondary)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-[var(--color-text)]">
+        Wholesale Yoga Wear <span class="text-[var(--color-primary)]">Canada</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-8">
+        Factory-direct activewear with fast shipping to Canada. DHL/FedEx express 5-10 business days. Low MOQ starting at 30 pieces.
+      </p>
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="inline-block bg-[var(--color-primary)] text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+        Get Quote via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[var(--color-bg)]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-[var(--color-text)]">Why Canadian Sellers Choose Us</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">🚀</div>
+          <h3 class="text-lg font-semibold mb-2">5-10 Day Express Shipping</h3>
+          <p class="text-[var(--color-text-secondary)]">DHL/FedEx direct to Canadian addresses. Vancouver & Toronto typically 5 days.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">📦</div>
+          <h3 class="text-lg font-semibold mb-2">Amazon FBA Canada Ready</h3>
+          <p class="text-[var(--color-text-secondary)]">FNSKU labeling, bilingual packaging, direct ship to Canadian FBA centers.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">🏷️</div>
+          <h3 class="text-lg font-semibold mb-2">Low MOQ 30-50pcs</h3>
+          <p class="text-[var(--color-text-secondary)]">Perfect for testing the Canadian market without large upfront investment.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">🛍️</div>
+          <h3 class="text-lg font-semibold mb-2">Shopify Friendly</h3>
+          <p class="text-[var(--color-text-secondary)]">Product photos, descriptions, and sizing charts ready for your Shopify store.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">🏭</div>
+          <h3 class="text-lg font-semibold mb-2">Factory Direct Pricing</h3>
+          <p class="text-[var(--color-text-secondary)]">No middlemen markup. Competitive pricing even with CAD/USD exchange rates.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">✅</div>
+          <h3 class="text-lg font-semibold mb-2">Custom Logo & Branding</h3>
+          <p class="text-[var(--color-text-secondary)]">Build your brand with custom labels, tags, and packaging options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-[var(--color-text)]">Shipping to Canada</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b-2 border-[var(--color-primary)]">
+              <th class="py-3 px-4 font-semibold">Shipping Method</th>
+              <th class="py-3 px-4 font-semibold">Delivery Time</th>
+              <th class="py-3 px-4 font-semibold">Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200">
+              <td class="py-3 px-4">DHL Express</td>
+              <td class="py-3 px-4">5-7 business days</td>
+              <td class="py-3 px-4">Urgent orders & samples</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="py-3 px-4">FedEx International</td>
+              <td class="py-3 px-4">5-10 business days</td>
+              <td class="py-3 px-4">Standard bulk orders</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="py-3 px-4">Sea Freight</td>
+              <td class="py-3 px-4">20-30 business days</td>
+              <td class="py-3 px-4">Large orders 1000+ pcs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[var(--color-bg)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-[var(--color-text)]">FAQ for Canadian Buyers</h2>
+      <div class="space-y-4">
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">Do I pay import duties on activewear shipped to Canada?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">Most activewear imported to Canada has duty rates of 16-18% under MFN tariffs. Orders under CAD $20 are duty-free. We provide proper HS codes and commercial invoices for smooth CBSA clearance.</p>
+        </details>
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">Can you ship to Amazon FBA Canada?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">Yes! We handle FNSKU labeling and ship directly to Canadian FBA fulfillment centers in Mississauga, Delta, and other locations.</p>
+        </details>
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">What currency do you accept for Canadian orders?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">We quote in USD but accept payment via bank transfer, PayPal, and credit card. Your bank will handle the CAD/USD conversion at their rate.</p>
+        </details>
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">Is there GST/HST on imported activewear?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">Yes, GST (5%) or HST (varies by province) applies to imported goods. CBSA collects this upon entry. You can claim input tax credits if registered for GST/HST.</p>
+        </details>
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">How long does shipping take to major Canadian cities?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">Vancouver & Toronto: 5-7 business days. Montreal & Calgary: 6-8 business days. Smaller cities: 7-10 business days via DHL or FedEx.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gradient-to-r from-[var(--color-primary)] to-purple-600 text-white text-center">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Source Activewear for the Canadian Market?</h2>
+      <p class="text-lg mb-8 opacity-90">Get instant quote via WhatsApp. Response within 30 minutes during business hours.</p>
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="inline-block bg-white text-[var(--color-primary)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+        WhatsApp Us Now
+      </a>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Do I pay import duties on activewear shipped to Canada?", "acceptedAnswer": {"@type": "Answer", "text": "Most activewear imported to Canada has duty rates of 16-18% under MFN tariffs. We provide proper HS codes and commercial invoices for CBSA clearance."}},
+      {"@type": "Question", "name": "Can you ship to Amazon FBA Canada?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! We handle FNSKU labeling and ship directly to Canadian FBA fulfillment centers."}},
+      {"@type": "Question", "name": "What currency do you accept for Canadian orders?", "acceptedAnswer": {"@type": "Answer", "text": "We quote in USD but accept payment via bank transfer, PayPal, and credit card."}},
+      {"@type": "Question", "name": "Is there GST/HST on imported activewear?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, GST (5%) or HST (varies by province) applies to imported goods. You can claim input tax credits if registered."}},
+      {"@type": "Question", "name": "How long does shipping take to major Canadian cities?", "acceptedAnswer": {"@type": "Answer", "text": "Vancouver & Toronto: 5-7 business days. Montreal & Calgary: 6-8 business days."}}
+    ]
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://yogabulk-backup.pages.dev/"},
+      {"@type": "ListItem", "position": 2, "name": "Canada", "item": "https://yogabulk-backup.pages.dev/wholesale-yoga-wear-canada"}
+    ]
+  })} />
+</BaseLayout>

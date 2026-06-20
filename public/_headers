@@ -1,0 +1,25 @@
+# Cloudflare Pages caching headers for static site
+
+# HTML pages - cache at edge for 1 hour, browser cache for 0 (instant updates)
+/*.html
+  Cache-Control: public, s-maxage=3600, max-age=0
+  X-Robots-Tag: index, follow
+
+# Images - cache at edge for 30 days, browser cache for 7 days
+/images/*
+  Cache-Control: public, s-maxage=2592000, max-age=604800
+  Expires: 
+
+# Static assets (CSS, JS, fonts) - cache at edge for 365 days, browser for 365 days
+/assets/*
+  Cache-Control: public, immutable, s-maxage=31536000, max-age=31536000
+
+# Sitemaps and robots
+/sitemap*.xml
+  Cache-Control: public, s-maxage=86400, max-age=3600
+
+/robots.txt
+  Cache-Control: public, s-maxage=86400, max-age=3600
+
+/llms.txt
+  Cache-Control: public, s-maxage=86400, max-age=3600

@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, WHATSAPP } from '../data/site';
+
+const region = {
+  name: 'USA',
+  slug: 'wholesale-yoga-wear-usa',
+  title: 'Wholesale Yoga Wear USA | Fast Shipping from China to America',
+  description: 'Wholesale activewear shipping to the USA. Low MOQ 30-50pcs, DHL/FedEx 3-7 day delivery, custom logo. Trusted by 500+ American sellers on Amazon, TikTok Shop & Shopify.',
+};
+---
+
+<BaseLayout title={region.title} description={region.description}>
+  <section class="py-16 sm:py-24 bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-bg-secondary)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-[var(--color-text)]">
+        Wholesale Yoga Wear <span class="text-[var(--color-primary)]">USA</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-8">
+        Factory-direct activewear with fast shipping to the United States. DHL/FedEx express 3-7 business days. Low MOQ starting at 30 pieces.
+      </p>
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="inline-block bg-[var(--color-primary)] text-white px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+        Get Quote via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[var(--color-bg)]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-[var(--color-text)]">Why American Sellers Choose Us</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">🚀</div>
+          <h3 class="text-lg font-semibold mb-2">3-7 Day Express Shipping</h3>
+          <p class="text-[var(--color-text-secondary)]">DHL/FedEx direct to US warehouses. Most orders arrive within 5 business days.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">📦</div>
+          <h3 class="text-lg font-semibold mb-2">Amazon FBA Compatible</h3>
+          <p class="text-[var(--color-text-secondary)]">FNSKU labeling, poly bagging, and direct ship to FBA warehouses included.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">🏷️</div>
+          <h3 class="text-lg font-semibold mb-2">Low MOQ 30-50pcs</h3>
+          <p class="text-[var(--color-text-secondary)]">Test styles without risking thousands. Mix colors and sizes within MOQ.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">🛍️</div>
+          <h3 class="text-lg font-semibold mb-2">TikTok Shop Ready</h3>
+          <p class="text-[var(--color-text-secondary)]">Trending styles verified on TikTok. Content-friendly packaging available.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">🏭</div>
+          <h3 class="text-lg font-semibold mb-2">Factory Direct Pricing</h3>
+          <p class="text-[var(--color-text-secondary)]">Cut out middlemen. Leggings from $4.50, sports bras from $3.80 per piece.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-[var(--color-bg-secondary)]">
+          <div class="text-4xl mb-4">✅</div>
+          <h3 class="text-lg font-semibold mb-2">Custom Logo & Branding</h3>
+          <p class="text-[var(--color-text-secondary)]">Heat transfer, embroidery, silicone labels. Build your own brand identity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-[var(--color-text)]">Shipping to the US</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b-2 border-[var(--color-primary)]">
+              <th class="py-3 px-4 font-semibold">Shipping Method</th>
+              <th class="py-3 px-4 font-semibold">Delivery Time</th>
+              <th class="py-3 px-4 font-semibold">Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-200">
+              <td class="py-3 px-4">DHL Express</td>
+              <td class="py-3 px-4">3-5 business days</td>
+              <td class="py-3 px-4">Urgent restocks & samples</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="py-3 px-4">FedEx International</td>
+              <td class="py-3 px-4">3-7 business days</td>
+              <td class="py-3 px-4">Standard bulk orders</td>
+            </tr>
+            <tr class="border-b border-gray-200">
+              <td class="py-3 px-4">Sea Freight (FCL/LCL)</td>
+              <td class="py-3 px-4">15-25 business days</td>
+              <td class="py-3 px-4">Large orders 1000+ pcs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[var(--color-bg)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-[var(--color-text)]">FAQ for US Buyers</h2>
+      <div class="space-y-4">
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">Do I pay import duties on activewear shipped to the US?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">Most activewear (HS code 6104) has duty rates of 11-20% depending on fabric type. We provide commercial invoices and HS codes for smooth customs clearance. For orders under $800, Section 321 de minimis may apply.</p>
+        </details>
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">Can you ship directly to Amazon FBA warehouses?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">Yes! We handle FNSKU labeling, poly bagging, and direct delivery to any US FBA fulfillment center. Just provide your FBA shipment plan and we handle the rest.</p>
+        </details>
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">What is the minimum order for US buyers?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">Minimum order is 30-50 pieces per style. You can mix colors and sizes within the MOQ. No minimum for sample orders (1-5 pieces at sample price).</p>
+        </details>
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">How do I track my shipment to the US?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">We provide tracking numbers within 24 hours of shipment. DHL and FedEx offer real-time tracking with delivery notifications via email and SMS.</p>
+        </details>
+        <details class="bg-[var(--color-bg-secondary)] rounded-lg p-4 cursor-pointer">
+          <summary class="font-semibold text-[var(--color-text)]">Do you offer refunds or returns for US orders?</summary>
+          <p class="mt-3 text-[var(--color-text-secondary)]">We accept returns for quality issues within 30 days. For sizing or preference changes, we offer exchanges or store credit. Shipping costs for returns are shared 50/50.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gradient-to-r from-[var(--color-primary)] to-purple-600 text-white text-center">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Source Activewear for the US Market?</h2>
+      <p class="text-lg mb-8 opacity-90">Get instant quote via WhatsApp. Response within 30 minutes during business hours.</p>
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="inline-block bg-white text-[var(--color-primary)] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+        WhatsApp Us Now
+      </a>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "Do I pay import duties on activewear shipped to the US?", "acceptedAnswer": {"@type": "Answer", "text": "Most activewear (HS code 6104) has duty rates of 11-20% depending on fabric type. We provide commercial invoices and HS codes for smooth customs clearance."}},
+      {"@type": "Question", "name": "Can you ship directly to Amazon FBA warehouses?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! We handle FNSKU labeling, poly bagging, and direct delivery to any US FBA fulfillment center."}},
+      {"@type": "Question", "name": "What is the minimum order for US buyers?", "acceptedAnswer": {"@type": "Answer", "text": "Minimum order is 30-50 pieces per style. You can mix colors and sizes within the MOQ."}},
+      {"@type": "Question", "name": "How do I track my shipment to the US?", "acceptedAnswer": {"@type": "Answer", "text": "We provide tracking numbers within 24 hours of shipment. DHL and FedEx offer real-time tracking."}},
+      {"@type": "Question", "name": "Do you offer refunds or returns for US orders?", "acceptedAnswer": {"@type": "Answer", "text": "We accept returns for quality issues within 30 days. For sizing or preference changes, we offer exchanges or store credit."}}
+    ]
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://yogabulk-backup.pages.dev/"},
+      {"@type": "ListItem", "position": 2, "name": "USA", "item": "https://yogabulk-backup.pages.dev/wholesale-yoga-wear-usa"}
+    ]
+  })} />
+</BaseLayout>

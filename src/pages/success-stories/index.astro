@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE } from "../../data/site";
+---
+<BaseLayout title="Customer Success Stories | Wholesale Yoga" description="Real success stories from Amazon FBA sellers, TikTok Shop merchants, and yoga studios who scaled their businesses with our wholesale activewear.">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <section class="text-center mb-12">
+      <p class="text-[var(--color-accent)] font-medium text-sm tracking-widest uppercase mb-3">Real Results</p>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-primary)] mb-4">Customer Success Stories</h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">See how sellers around the world scaled their activewear brands with our wholesale partnership.</p>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      <a href="/success-stories/amazon-seller" class="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow group">
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 text-center">
+          <div class="text-5xl mb-4">📦</div>
+          <h2 class="text-xl font-bold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">Amazon FBA Seller</h2>
+          <p class="text-gray-600 mt-2 text-sm">From 50pcs test order to 5,000+ monthly sales</p>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">100x</p><p class="text-xs text-gray-500">Growth</p></div>
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">4.8★</p><p class="text-xs text-gray-500">Rating</p></div>
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">35%</p><p class="text-xs text-gray-500">Margin</p></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="/success-stories/tiktok-shop" class="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow group">
+        <div class="bg-gradient-to-br from-pink-50 to-pink-100 p-8 text-center">
+          <div class="text-5xl mb-4">🎵</div>
+          <h2 class="text-xl font-bold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">TikTok Shop Merchant</h2>
+          <p class="text-gray-600 mt-2 text-sm">Viral video 200K views behind the supply chain</p>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">200K</p><p class="text-xs text-gray-500">Views</p></div>
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">5⭐</p><p class="text-xs text-gray-500">Rating</p></div>
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">40%</p><p class="text-xs text-gray-500">Conversion</p></div>
+          </div>
+        </div>
+      </a>
+
+      <a href="/success-stories/yoga-studio" class="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-shadow group">
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 text-center">
+          <div class="text-5xl mb-4">🧘</div>
+          <h2 class="text-xl font-bold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">Yoga Studio Owner</h2>
+          <p class="text-gray-600 mt-2 text-sm">Custom branded activewear for studio clients</p>
+        </div>
+        <div class="p-6">
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">300%</p><p class="text-xs text-gray-500">Retention</p></div>
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">$15K</p><p class="text-xs text-gray-500">Revenue</p></div>
+            <div><p class="text-2xl font-bold text-[var(--color-accent)]">200+</p><p class="text-xs text-gray-500">Sets Sold</p></div>
+          </div>
+        </div>
+      </a>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-[var(--color-secondary)] rounded-2xl p-8 text-center">
+      <h2 class="text-2xl font-bold text-[var(--color-primary)] mb-4">Be the Next Success Story</h2>
+      <p class="text-gray-600 mb-6">Start with a small test order and scale with confidence.</p>
+      <a href={SITE.whatsappLink} target="_blank" class="inline-flex items-center gap-2 bg-[var(--color-whatsapp)] text-white px-8 py-3 rounded-full font-semibold hover:bg-green-600 transition-colors">Start Your Journey →</a>
+    </section>
+  </div>
+</BaseLayout>

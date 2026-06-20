@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Wholesale Yoga - B2B Activewear Wholesale Site */
+/* High-end black/white/gray palette with low-saturation Morandi accents */
+
+@theme {
+  --color-primary: #1a1a1a;
+  --color-secondary: #f5f0eb;
+  --color-accent: #a89282;
+  --color-accent-light: #c4b5a5;
+  --color-text: #2d2d2d;
+  --color-text-light: #6b6b6b;
+  --color-border: #e5e0db;
+  --color-white: #ffffff;
+  --color-stock-green: #4a7c59;
+  --color-stock-limited: #c4883a;
+  --color-cta: #1a1a1a;
+  --color-cta-hover: #333333;
+  --color-whatsapp: #25d366;
+  --font-heading: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background-color: var(--color-white);
+}
+
+/* Floating WhatsApp CTA */
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 50;
+  animation: pulse-glow 2s infinite;
+}
+
+@media (min-width: 640px) {
+  .whatsapp-float {
+    bottom: 2rem;
+    right: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  body.hide-whatsapp .whatsapp-float,
+  body.hide-whatsapp-mobile .whatsapp-float {
+    display: none !important;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 26, 26, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(26, 26, 26, 0); }
+}

@@ -1,0 +1,211 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedResources from "../../components/RelatedResources.astro";
+import { allInventory, totalInventoryStock } from "../../data/inventory";
+
+const title = "Real-Time Inventory | Wholesale Activewear Stock";
+const description = `Browse ${totalInventoryStock.toLocaleString()}+ pieces of ready-to-ship wholesale activewear. Seamless leggings, sports bras, matching sets, jumpsuits, and gym shorts. MOQ 20-30pcs. Ships in 3-7 days.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Hero Section -->
+    <section class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        Real-Time Inventory
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        {totalInventoryStock.toLocaleString()}+ pieces in stock, ready to ship. 
+        Browse by category and check live availability.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
+          ✅ Ships in 3-7 Days
+        </span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+          📦 MOQ 20-30pcs
+        </span>
+        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
+          🎨 Mix Colors & Sizes
+        </span>
+      </div>
+    </section>
+
+    <!-- Inventory Categories Grid -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Browse by Category</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allInventory.map((category) => (
+          <a 
+            href={`/inventory/${category.category}/`}
+            class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+          >
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                  {category.title.replace(" Inventory", "")}
+                </h3>
+                <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">
+                  {category.items.length} Styles
+                </span>
+              </div>
+              <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                {category.description}
+              </p>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-500">
+                  <span class="font-bold text-gray-900">{category.totalStock.toLocaleString()}</span> pcs in stock
+                </span>
+                <span class="text-blue-600 font-medium group-hover:translate-x-1 transition-transform">
+                  View Inventory →
+                </span>
+              </div>
+            </div>
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 px-6 py-3">
+              <div class="flex items-center gap-4 text-xs text-gray-600">
+                <span>MOQ: {category.items[0]?.moq || 30}pcs</span>
+                <span>•</span>
+                <span>Ships: 3-7 days</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8 mb-16">
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl font-bold mb-2">{totalInventoryStock.toLocaleString()}+</div>
+          <div class="text-blue-100">Total Pieces</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold mb-2">{allInventory.length}</div>
+          <div class="text-blue-100">Categories</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold mb-2">30+</div>
+          <div class="text-blue-100">Colors</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold mb-2">3-7</div>
+          <div class="text-blue-100">Days Shipping</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">How Inventory Orders Work</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">1️⃣</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Browse Inventory</h3>
+          <p class="text-sm text-gray-600">Check real-time stock levels for each style, color, and size.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">2️⃣</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Select Products</h3>
+          <p class="text-sm text-gray-600">Mix colors and sizes within the same style to meet MOQ.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">3️⃣</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Get Quote</h3>
+          <p class="text-sm text-gray-600">WhatsApp us your selection for instant pricing and availability.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">4️⃣</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Ships in 3-7 Days</h3>
+          <p class="text-sm text-gray-600">We pack and ship your order with tracking provided.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Frequently Asked Questions</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-2">Is the inventory really in stock?</h3>
+          <p class="text-sm text-gray-600">Yes! Our inventory updates in real-time. If you can see it on this page, it's physically in our warehouse ready to ship.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-2">Can I mix colors and sizes?</h3>
+          <p class="text-sm text-gray-600">Absolutely! You can mix any colors and sizes within the same style to meet the MOQ (usually 30pcs per style).</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-2">What if stock runs out?</h3>
+          <p class="text-sm text-gray-600">We recommend placing orders quickly for popular items. You can also pre-order out-of-stock items with 2-3 week lead time.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 border border-gray-200">
+          <h3 class="font-bold text-gray-900 mb-2">Do you offer samples?</h3>
+          <p class="text-sm text-gray-600">Yes! You can order samples at retail price to check quality before placing a wholesale order. Sample shipping is $15-25.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gray-900 text-white rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to Order?</h2>
+      <p class="text-lg mb-6 text-gray-300 max-w-2xl mx-auto">
+        Browse our inventory categories above or contact us directly for personalized recommendations.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/8615556105390?text=Hi,%20I'm%20interested%20in%20your%20inventory" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-green-500 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-600 transition shadow-lg"
+        >
+          💬 WhatsApp Us Now
+        </a>
+        <a 
+          href="/products/" 
+          class="inline-block bg-gray-700 text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-600 transition"
+        >
+          Browse All Products
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <RelatedResources currentPage="inventory" />
+
+  <!-- Dataset Schema for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "YogaBulk Wholesale Activewear Inventory",
+      "description": "Real-time inventory data for wholesale activewear including seamless leggings, sports bras, matching sets, jumpsuits, and gym shorts.",
+      "url": "https://yogabulk-backup.pages.dev/inventory/",
+      "creator": {
+        "@type": "Organization",
+        "name": "YogaBulk"
+      },
+      "datePublished": "2024-01-01",
+      "license": "https://yogabulk-backup.pages.dev/terms",
+      "distribution": {
+        "@type": "DataDownload",
+        "contentUrl": "https://yogabulk-backup.pages.dev/inventory/",
+        "encodingFormat": "HTML"
+      },
+      "variableMeasured": [
+        "Stock Quantity",
+        "Available Colors",
+        "Available Sizes",
+        "Minimum Order Quantity",
+        "Price Range"
+      ]
+    }
+  </script>
+</BaseLayout>

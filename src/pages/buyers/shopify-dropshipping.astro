@@ -1,0 +1,321 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedResources from "../../components/RelatedResources.astro";
+import { shopifyCases } from "../../data/caseStudies";
+
+const title = "Shopify Dropshipping Activewear | Private Label Supplier";
+const description = "Dropshipping activewear for Shopify sellers. Private label, blind shipping, no MOQ. 100+ Shopify stores use YogaBulk. Start with $0 inventory. Ships directly to your customers.";
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Hero -->
+    <section class="text-center mb-12">
+      <div class="inline-block bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+        🚀 Zero Inventory Risk
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        Shopify Dropshipping Activewear
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Private label dropshipping for Shopify stores. We ship directly to your customers with your branding. 
+        No inventory risk, no upfront costs, just focus on marketing.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
+          🏷️ Private Label
+        </span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+          📦 Blind Shipping
+        </span>
+        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
+          💰 No MOQ
+        </span>
+      </div>
+    </section>
+
+    <!-- Why Shopify Sellers Choose Us -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Why Shopify Sellers Choose YogaBulk</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🏷️</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Private Label</h3>
+          <p class="text-gray-600 text-sm">Your brand, our products. We add your logo, tags, and packaging. Your customers never know we exist.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📦</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Blind Dropshipping</h3>
+          <p class="text-gray-600 text-sm">No invoices, no logos, no "YogaBulk" anywhere. Your customers think you shipped it yourself.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">💰</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">No MOQ</h3>
+          <p class="text-gray-600 text-sm">Order 1 piece or 1000. Perfect for testing products before scaling. No inventory risk.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Fast Shipping</h3>
+          <p class="text-gray-600 text-sm">3-7 day shipping to USA, UK, EU, Australia. Your customers get their orders fast.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📸</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Product Photos</h3>
+          <p class="text-gray-600 text-sm">High-quality product images provided. Use them for your Shopify store to save on photography.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🔧</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Shopify Integration</h3>
+          <p class="text-gray-600 text-sm">CSV exports for bulk uploads. Compatible with Oberlo, DSers, and other dropshipping apps.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How Dropshipping Works -->
+    <section class="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">How Dropshipping Works</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">1️⃣</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">You Get an Order</h3>
+          <p class="text-sm text-gray-600">Customer places order on your Shopify store at your retail price.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">2️⃣</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Forward to Us</h3>
+          <p class="text-sm text-gray-600">Send us the order details via WhatsApp or email. Pay wholesale price.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">3️⃣</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">We Ship Blind</h3>
+          <p class="text-sm text-gray-600">We pack and ship directly to your customer with your branding.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-white rounded-full shadow-md flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">4️⃣</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">You Keep Profit</h3>
+          <p class="text-sm text-gray-600">Retail price - wholesale price = your profit. No inventory risk.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profit Calculator -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Dropshipping Profit Calculator</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
+          <h3 class="font-bold text-gray-900 mb-4">Example: Seamless Leggings</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Your Retail Price</span>
+              <span class="font-semibold">$35.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Our Wholesale Price</span>
+              <span class="font-semibold">$8.50</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Shipping to Customer</span>
+              <span class="font-semibold">$5.00</span>
+            </div>
+            <div class="border-t pt-3 flex justify-between font-bold text-lg">
+              <span class="text-gray-900">Your Profit</span>
+              <span class="text-green-600">$21.50</span>
+            </div>
+            <div class="text-center text-sm text-green-600 font-medium">
+              Margin: 61%
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
+          <h3 class="font-bold text-gray-900 mb-4">Example: Matching Set</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Your Retail Price</span>
+              <span class="font-semibold">$55.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Our Wholesale Price</span>
+              <span class="font-semibold">$14.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Shipping to Customer</span>
+              <span class="font-semibold">$5.00</span>
+            </div>
+            <div class="border-t pt-3 flex justify-between font-bold text-lg">
+              <span class="text-gray-900">Your Profit</span>
+              <span class="text-green-600">$36.00</span>
+            </div>
+            <div class="text-center text-sm text-green-600 font-medium">
+              Margin: 65%
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
+          <h3 class="font-bold text-gray-900 mb-4">Monthly Projection</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Orders per Day</span>
+              <span class="font-semibold">10</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Average Order Value</span>
+              <span class="font-semibold">$45</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Average Margin</span>
+              <span class="font-semibold">60%</span>
+            </div>
+            <div class="border-t pt-3 flex justify-between font-bold text-lg">
+              <span class="text-gray-900">Monthly Profit</span>
+              <span class="text-green-600">$8,100</span>
+            </div>
+            <div class="text-center text-sm text-gray-500">
+              300 orders × $27 avg profit
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Shopify Dropshipping Success Stories</h2>
+      <div class="space-y-8">
+        {shopifyCases.map((story) => (
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="grid md:grid-cols-3 gap-0">
+              <div class="bg-gradient-to-br from-green-500 to-teal-600 text-white p-8 flex flex-col justify-center">
+                <div class="text-4xl font-bold mb-2">{story.currentVolume}</div>
+                <div class="text-green-100 mb-4">Current Volume</div>
+                <div class="text-sm text-green-100">Started: {story.startedWith}</div>
+                <div class="text-sm text-green-100">Timeline: {story.timeline}</div>
+              </div>
+              <div class="md:col-span-2 p-8">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                  <div>
+                    <h3 class="font-bold text-gray-900">{story.name}</h3>
+                    <p class="text-sm text-gray-600">{story.businessType} • {story.location}</p>
+                  </div>
+                </div>
+                <blockquote class="text-gray-700 italic mb-4">"{story.testimonial}"</blockquote>
+                <div class="grid grid-cols-2 gap-4">
+                  {story.results.slice(0, 4).map((result) => (
+                    <div class="flex items-center gap-2">
+                      <span class="text-green-500">✓</span>
+                      <span class="text-sm text-gray-700">{result}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Start Your Shopify Store</h2>
+      <div class="grid md:grid-cols-5 gap-4">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+          <h3 class="font-bold text-gray-900 mb-2">Create Shopify Store</h3>
+          <p class="text-sm text-gray-600">Sign up at shopify.com. Choose a theme and customize your branding.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+          <h3 class="font-bold text-gray-900 mb-2">Order Samples</h3>
+          <p class="text-sm text-gray-600">Test 3-5 products to verify quality and create your own photos.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+          <h3 class="font-bold text-gray-900 mb-2">Upload Products</h3>
+          <p class="text-sm text-gray-600">Use our product photos or your own. Set your retail prices.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+          <h3 class="font-bold text-gray-900 mb-2">Drive Traffic</h3>
+          <p class="text-sm text-gray-600">Use TikTok, Instagram, or Facebook ads to get your first sales.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
+          <h3 class="font-bold text-gray-900 mb-2">We Fulfill Orders</h3>
+          <p class="text-sm text-gray-600">Forward orders to us. We ship blind with your branding.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-green-500 to-teal-500 text-white rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl font-bold mb-4">Start Dropshipping Today</h2>
+      <p class="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+        Join 100+ Shopify sellers who built their stores with YogaBulk. 
+        Zero inventory risk, private label branding, 60%+ margins.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/8615556105390?text=Hi,%20I%20want%20to%20start%20dropshipping%20on%20Shopify"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white text-green-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition shadow-lg"
+        >
+          💬 Chat with Dropshipping Specialist
+        </a>
+        <a 
+          href="/inventory/" 
+          class="inline-block bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-700 transition border-2 border-green-400"
+        >
+          Browse Products
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <RelatedResources currentPage="buyer" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Shopify Dropshipping Activewear Supplier Guide 2025",
+      "description": "Complete guide for Shopify sellers looking to dropship private label activewear. Includes profit calculator and success stories.",
+      "url": "https://yogabulk-backup.pages.dev/buyers/shopify-dropshipping/",
+      "author": {
+        "@type": "Organization",
+        "name": "YogaBulk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "YogaBulk",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yogabulk-backup.pages.dev/favicon.svg"
+        }
+      },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-06-01"
+    }
+  </script>
+</BaseLayout>

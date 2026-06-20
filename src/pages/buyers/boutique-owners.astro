@@ -1,0 +1,278 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedResources from "../../components/RelatedResources.astro";
+import { boutiqueCases } from "../../data/caseStudies";
+
+const title = "Boutique Wholesale Activewear | Small Batch Supplier";
+const description = "Wholesale activewear for boutique owners. Low MOQ 30pcs, curated collections, fast restocking. 150+ boutiques trust YogaBulk. Start with $400 budget. Ships in 3-7 days.";
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Hero -->
+    <section class="text-center mb-12">
+      <div class="inline-block bg-rose-100 text-rose-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+        🛍️ Trusted by 150+ Boutiques
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        Boutique Wholesale Activewear
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Curated collections for boutique owners who demand quality and uniqueness. 
+        Small batch orders, fast turnaround, and styles your customers won't find everywhere.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <span class="bg-rose-100 text-rose-800 px-4 py-2 rounded-full text-sm font-medium">
+          🎯 Curated Collections
+        </span>
+        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
+          📦 Small Batch 30pcs
+        </span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+          ⚡ 3-7 Day Shipping
+        </span>
+      </div>
+    </section>
+
+    <!-- Why Boutique Owners Choose Us -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Why Boutique Owners Choose YogaBulk</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-rose-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🎯</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Curated Collections</h3>
+          <p class="text-gray-600 text-sm">Not everything, just the best. We curate styles that perform well in boutique settings—unique, high-quality, and Instagram-worthy.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📦</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Small Batch Friendly</h3>
+          <p class="text-gray-600 text-sm">MOQ 30pcs means you can test new styles without committing to huge inventory. Perfect for boutiques with limited storage.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">✨</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Exclusive Styles</h3>
+          <p class="text-gray-600 text-sm">Many of our styles aren't sold on Amazon. Your customers get something special they can't find at big box stores.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🔄</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Fast Restocking</h3>
+          <p class="text-gray-600 text-sm">When a style sells out, restock in 3-7 days. Never miss a sale because you're waiting for slow overseas shipping.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🏷️</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Private Label Ready</h3>
+          <p class="text-gray-600 text-sm">Add your boutique's tags and labels. Build your brand while we handle the manufacturing.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">💎</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Premium Quality</h3>
+          <p class="text-gray-600 text-sm">Your boutique's reputation depends on quality. Our AQL 2.5 inspection ensures every piece meets boutique standards.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Boutique Starter Collections -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Boutique Starter Collections</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-rose-400 to-pink-500 text-white p-6">
+            <h3 class="text-xl font-bold">Essential Basics</h3>
+            <p class="text-rose-100 text-sm">Perfect for new boutiques</p>
+          </div>
+          <div class="p-6">
+            <div class="text-3xl font-bold text-gray-900 mb-2">$450</div>
+            <p class="text-gray-600 text-sm mb-4">50 pieces • 5 core styles</p>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Seamless Leggings (15pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Sports Bras (10pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Biker Shorts (10pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Tank Tops (10pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Hoodies (5pcs)</li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-600">Retail value: <span class="font-semibold text-gray-900">$1,200-1,500</span></p>
+              <p class="text-sm text-green-600 font-medium">Margin: 60-70%</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-purple-400 to-indigo-500 text-white p-6">
+            <h3 class="text-xl font-bold">Trending Now</h3>
+            <p class="text-purple-100 text-sm">Viral styles that sell fast</p>
+          </div>
+          <div class="p-6">
+            <div class="text-3xl font-bold text-gray-900 mb-2">$680</div>
+            <p class="text-gray-600 text-sm mb-4">60 pieces • 6 trending styles</p>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Scrunch Butt Leggings (12pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Flare Yoga Pants (12pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Matching Sets (12pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Ribbed Tops (12pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Jumpsuits (6pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Crop Jackets (6pcs)</li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-600">Retail value: <span class="font-semibold text-gray-900">$2,000-2,400</span></p>
+              <p class="text-sm text-green-600 font-medium">Margin: 65-72%</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-amber-400 to-orange-500 text-white p-6">
+            <h3 class="text-xl font-bold">Premium Collection</h3>
+            <p class="text-amber-100 text-sm">Higher margins, luxury feel</p>
+          </div>
+          <div class="p-6">
+            <div class="text-3xl font-bold text-gray-900 mb-2">$950</div>
+            <p class="text-gray-600 text-sm mb-4">50 pieces • 5 premium styles</p>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Butter Soft Leggings (12pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> High-End Bras (12pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Luxe Matching Sets (10pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Cashmere Blend Hoodies (8pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Designer Joggers (8pcs)</li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-600">Retail value: <span class="font-semibold text-gray-900">$2,800-3,200</span></p>
+              <p class="text-sm text-green-600 font-medium">Margin: 70-75%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Boutique Success Stories</h2>
+      <div class="space-y-8">
+        {boutiqueCases.map((story) => (
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="grid md:grid-cols-3 gap-0">
+              <div class="bg-gradient-to-br from-rose-500 to-pink-600 text-white p-8 flex flex-col justify-center">
+                <div class="text-4xl font-bold mb-2">{story.currentVolume}</div>
+                <div class="text-rose-100 mb-4">Current Volume</div>
+                <div class="text-sm text-rose-100">Started: {story.startedWith}</div>
+                <div class="text-sm text-rose-100">Timeline: {story.timeline}</div>
+              </div>
+              <div class="md:col-span-2 p-8">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                  <div>
+                    <h3 class="font-bold text-gray-900">{story.name}</h3>
+                    <p class="text-sm text-gray-600">{story.businessType} • {story.location}</p>
+                  </div>
+                </div>
+                <blockquote class="text-gray-700 italic mb-4">"{story.testimonial}"</blockquote>
+                <div class="grid grid-cols-2 gap-4">
+                  {story.results.slice(0, 4).map((result) => (
+                    <div class="flex items-center gap-2">
+                      <span class="text-green-500">✓</span>
+                      <span class="text-sm text-gray-700">{result}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Start -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">How to Stock Your Boutique</h2>
+      <div class="grid md:grid-cols-5 gap-4">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rose-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+          <h3 class="font-bold text-gray-900 mb-2">Choose a Collection</h3>
+          <p class="text-sm text-gray-600">Pick from our curated starter collections or build your own mix.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rose-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+          <h3 class="font-bold text-gray-900 mb-2">Order Samples</h3>
+          <p class="text-sm text-gray-600">Test quality and fit before committing to a full order.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rose-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+          <h3 class="font-bold text-gray-900 mb-2">Place Your Order</h3>
+          <p class="text-sm text-gray-600">MOQ 30pcs. Mix sizes and colors to match your customer base.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rose-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+          <h3 class="font-bold text-gray-900 mb-2">Add Your Branding</h3>
+          <p class="text-sm text-gray-600">We can add your tags and labels, or ship blank for you to brand.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-rose-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
+          <h3 class="font-bold text-gray-900 mb-2">Restock Bestsellers</h3>
+          <p class="text-sm text-gray-600">When styles sell out, reorder quickly. Fast 3-7 day shipping.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-rose-500 to-pink-500 text-white rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl font-bold mb-4">Stock Your Boutique Today</h2>
+      <p class="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+        Join 150+ boutique owners who trust YogaBulk for quality activewear. 
+        Start with just $400 and curated collections that sell.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/8615556105390?text=Hi,%20I'm%20a%20boutique%20owner%20and%20want%20to%20see%20collections"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white text-rose-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition shadow-lg"
+        >
+          💬 Chat with Boutique Specialist
+        </a>
+        <a 
+          href="/inventory/" 
+          class="inline-block bg-rose-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-rose-700 transition border-2 border-rose-400"
+        >
+          Browse Collections
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <RelatedResources currentPage="buyer" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Boutique Wholesale Activewear Supplier Guide 2025",
+      "description": "Complete guide for boutique owners looking to source wholesale activewear. Includes starter collections, pricing, and success stories.",
+      "url": "https://yogabulk-backup.pages.dev/buyers/boutique-owners/",
+      "author": {
+        "@type": "Organization",
+        "name": "YogaBulk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "YogaBulk",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yogabulk-backup.pages.dev/favicon.svg"
+        }
+      },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-06-01"
+    }
+  </script>
+</BaseLayout>

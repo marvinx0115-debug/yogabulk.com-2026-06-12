@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE, FAQ_SELLERS } from '../../data/site';
+const title = 'Sellers Guide FAQ — Amazon FBA, TikTok Shop & E-commerce';
+const description = 'Complete guide to selling activewear on Amazon FBA, TikTok Shop, and other platforms. Fees, setup, fulfillment, and profit strategies for online sellers.';
+---
+<BaseLayout title={title} description={description}>
+  <section style="background-color:var(--color-primary);color:white;">
+    <div style="max-width:56rem;margin:0 auto;padding:4rem 1.5rem;text-align:center;">
+      <p style="color:var(--color-accent-light);font-weight:500;font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">Sellers Guide</p>
+      <h1 style="font-size:2.5rem;font-weight:800;margin-bottom:1rem;">E-commerce & Channel FAQ</h1>
+      <p style="color:#d1d5db;max-width:42rem;margin:0 auto;">Amazon FBA, TikTok Shop, dropshipping and multi-channel selling strategies.</p>
+    </div>
+  </section>
+  <nav style="max-width:56rem;margin:1.5rem auto;padding:0 1.5rem;">
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+      <a href="/faq/" style="font-size:0.875rem;color:var(--color-text-light);text-decoration:none;">← Back to FAQ</a>
+      <span style="color:var(--color-border);">|</span>
+      <a href="/faq/product-knowledge/" style="font-size:0.875rem;color:var(--color-text-light);text-decoration:none;">Product Knowledge</a>
+      <a href="/faq/sellers-guide/" style="font-size:0.875rem;color:var(--color-primary);font-weight:600;text-decoration:none;">Sellers Guide</a>
+      <a href="/faq/business-guide/" style="font-size:0.875rem;color:var(--color-text-light);text-decoration:none;">Business Guide</a>
+    </div>
+  </nav>
+  <section style="max-width:56rem;margin:0 auto;padding:0 1.5rem 4rem;">
+    <div style="display:flex;flex-direction:column;gap:0.5rem;">
+      {FAQ_SELLERS.map((faq, i) => (<details style="background:white;border:1px solid var(--color-border);border-radius:0.75rem;overflow:hidden;">
+        <summary style="display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;cursor:pointer;list-style:none;gap:1rem;">
+          <span style="font-weight:600;color:var(--color-text);"><span style="color:var(--color-accent);font-size:0.75rem;margin-right:0.5rem;">{i + 1}</span>{faq.q}</span>
+          <svg style="width:1.25rem;height:1.25rem;color:var(--color-text-light);flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div style="padding:0 1.25rem 1.25rem;font-size:0.875rem;color:var(--color-text-light);line-height:1.75;border-top:1px solid var(--color-border);padding-top:0.75rem;">{faq.a}</div>
+      </details>))}
+    </div>
+  </section>
+  <div style="max-width:56rem;margin:0 auto;padding:0 1.5rem 4rem;">
+    <div style="background-color:var(--color-secondary);border-radius:1.5rem;padding:2rem;text-align:center;">
+      <h2 style="font-size:1.5rem;font-weight:700;color:var(--color-primary);margin-bottom:0.75rem;">Need More Help?</h2>
+      <p style="font-size:0.875rem;color:var(--color-text-light);margin-bottom:1.5rem;">Get expert advice on WhatsApp. We respond within 30 minutes.</p>
+      <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background-color:var(--color-whatsapp);color:white;padding:1rem 2rem;border-radius:9999px;font-weight:600;">Ask on WhatsApp</a>
+    </div>
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org", "@type": "FAQPage",
+    "mainEntity": FAQ_SELLERS.map(f => ({
+      "@type": "Question", "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    }))
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE.url },
+      { "@type": "ListItem", "position": 2, "name": "FAQ", "item": SITE.url + "/faq" },
+      { "@type": "ListItem", "position": 3, "name": "Sellers Guide", "item": SITE.url + "/faq/sellers-guide" }
+    ]
+  })} />
+  <script>
+    const items = document.querySelectorAll('details');
+    items.forEach(item => item.addEventListener('toggle', () => {
+      if (item.open) items.forEach(other => { if (other !== item && other.open) other.open = false; });
+    }));
+  </script>
+</BaseLayout>

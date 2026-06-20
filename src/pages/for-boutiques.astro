@@ -1,0 +1,91 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../data/site";
+
+const pageFaqs = [
+  { q: "Can I order small quantities to test styles before committing to larger orders?", a: "Yes! We offer sample orders of 1-5 pieces at near-retail pricing. You can test our quality and fit before placing a bulk order of 50+ pieces. Sample cost is fully refundable on bulk orders." },
+  { q: "What makes your activewear suitable for boutique studios?", a: "Our activewear is designed with a premium feel - buttery-soft seamless fabric, flattering cuts, and on-trend styles that match what your clients expect at boutique price points. We offer 300+ styles with new drops every 2 weeks." },
+  { q: "Do you offer exclusive styles for my studio?", a: "For orders of 300+ pieces per style, we can develop exclusive colors or minor design modifications for your studio brand. Custom packaging with your logo is also available. Contact us to discuss exclusivity terms." },
+  { q: "What is the lead time for re-stocking popular styles?", a: "In-stock items ship within 24-48 hours. For items that are low stock, production takes 7-15 days. We offer a pre-order option for upcoming new styles so you can secure inventory before they drop." },
+  { q: "Can I get professional photos and content for my studio's website?", a: "Yes! All wholesale customers receive high-resolution product photos (white background and lifestyle shots) and short videos. You get full commercial usage rights for your own store, social media, and marketing materials." },
+];
+
+const benefits = [
+  { icon: "✨", title: "Premium Quality", desc: "Buttery-soft seamless fabric that your clients will love. OEKO-TEX 100 certified, squat-proof, and moisture-wicking." },
+  { icon: "📦", title: "300+ In-Stock Styles", desc: "New drops every 2 weeks. Seamless leggings, scrunch butt, sports bras, matching sets - always fresh inventory." },
+  { icon: "🚀", title: "Fast Turnaround", desc: "Orders ship within 24-48 hours. No long waiting periods - keep your shelves stocked and clients happy." },
+  { icon: "🎨", title: "Custom Branding", desc: "Hang tags, custom packaging, and logo labels to make your studio stand out. Build your own activewear brand." },
+];
+---
+<BaseLayout
+  title="Activewear for Boutique Yoga Studios"
+  description="Premium wholesale activewear for boutique yoga studios. Low MOQ 30-50pcs, 300+ in-stock styles, custom branding. Perfect for studio merchandise and retail."
+>
+  <section style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:white;">
+    <div style="max-width:56rem;margin:0 auto;padding:4rem 1.5rem;text-align:center;">
+      <p style="color:#e94560;font-weight:600;font-size:0.875rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;">For Boutique Owners</p>
+      <h1 style="font-size:2.5rem;font-weight:800;margin-bottom:1rem;">Activewear Your Studio Deserves</h1>
+      <p style="color:#94a3b8;max-width:42rem;margin:0 auto 1.5rem;font-size:1.1rem;">Premium quality wholesale activewear designed for boutique studios. Low MOQ, fast shipping, and custom branding to help you build a recognizable studio brand.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:white;padding:0.875rem 2rem;border-radius:9999px;font-weight:700;font-size:0.9rem;">Chat on WhatsApp</a>
+        <a href="/inventory" style="display:inline-flex;align-items:center;gap:0.5rem;border:2px solid rgba(255,255,255,0.3);color:white;padding:0.875rem 2rem;border-radius:9999px;font-weight:600;font-size:0.9rem;">View Inventory</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+    <h2 style="font-size:1.5rem;font-weight:800;color:var(--color-primary);text-align:center;margin-bottom:2rem;">Why Studios Choose Wholesale Yoga</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.5rem;">
+      {benefits.map(b => (
+        <div style="background:white;border:1px solid var(--color-border);border-radius:1rem;padding:1.5rem;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">{b.icon}</div>
+          <h3 style="font-size:1rem;font-weight:700;color:var(--color-primary);margin-bottom:0.5rem;">{b.title}</h3>
+          <p style="font-size:0.875rem;color:var(--color-text-light);line-height:1.6;">{b.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div style="background:var(--color-secondary);">
+    <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+      <h2 style="font-size:1.5rem;font-weight:800;color:var(--color-primary);margin-bottom:1.5rem;text-align:center;">Studio-Specific FAQ</h2>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        {pageFaqs.map(faq => (
+          <details style="background:white;border:1px solid var(--color-border);border-radius:0.75rem;overflow:hidden;">
+            <summary style="display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;cursor:pointer;list-style:none;gap:1rem;">
+              <span style="font-weight:600;color:var(--color-text);font-size:0.9rem;">{faq.q}</span>
+              <svg style="width:1.25rem;height:1.25rem;color:var(--color-text-light);flex-shrink:0;transition:transform 0.2s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div style="padding:0 1.25rem 1.25rem;font-size:0.875rem;color:var(--color-text-light);line-height:1.7;border-top:1px solid var(--color-border);padding-top:0.75rem;">{faq.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:56rem;margin:0 auto;padding:3rem 1.5rem;">
+    <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:1.5rem;padding:2.5rem;text-align:center;color:white;">
+      <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:0.75rem;">Ready to Stock Your Studio?</h2>
+      <p style="color:#94a3b8;margin-bottom:1.5rem;font-size:0.9rem;">Get a custom quote and inventory list within 30 minutes on WhatsApp.</p>
+      <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background:#25D366;color:white;padding:1rem 2.5rem;border-radius:9999px;font-weight:700;font-size:1rem;">Start Chatting</a>
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": pageFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+    })),
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": SITE.url },
+      { "@type": "ListItem", "position": 2, "name": "For Boutiques", "item": SITE.url + "/for-boutiques" },
+    ],
+  })} />
+</BaseLayout>

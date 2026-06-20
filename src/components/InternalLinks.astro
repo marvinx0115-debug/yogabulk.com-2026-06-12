@@ -1,0 +1,144 @@
+---
+// Smart internal linking component for SEO
+// Automatically generates contextual links based on page type
+
+interface Props {
+  pageType: 'home' | 'product' | 'category' | 'buyer' | 'inventory' | 'data' | 'about' | 'blog';
+  currentSlug?: string;
+  productCategory?: string;
+}
+
+const { pageType, currentSlug, productCategory } = Astro.props;
+
+// Link database for contextual internal linking
+const linkDatabase = {
+  // Buyer type pages
+  buyerHub: [
+    { url: '/buyers/amazon-fba/', title: 'Amazon FBA Wholesale', desc: 'Low MOQ activewear for Amazon sellers' },
+    { url: '/buyers/tiktok-shop/', title: 'TikTok Shop Supplier', desc: 'Viral products for TikTok creators' },
+    { url: '/buyers/boutique-owners/', title: 'Boutique Wholesale', desc: 'Curated collections for boutiques' },
+    { url: '/buyers/shopify-dropshipping/', title: 'Shopify Dropshipping', desc: 'Private label dropshipping' },
+    { url: '/buyers/yoga-studios/', title: 'Yoga Studio Merchandise', desc: 'Branded activewear for studios' },
+    { url: '/buyers/wholesale-distributors/', title: 'Distributor Partnership', desc: 'Container load pricing' },
+  ],
+  
+  // Data/Resource pages
+  dataHub: [
+    { url: '/data/yoga-leggings-wholesale-pricing/', title: 'Wholesale Pricing', desc: 'Complete price list and tiers' },
+    { url: '/data/activewear-moq-guide/', title: 'MOQ Guide', desc: 'Minimum order quantities explained' },
+    { url: '/inventory/', title: 'Live Inventory', desc: 'Real-time stock levels' },
+  ],
+  
+  // Product categories
+  categories: [
+    { url: '/products/seamless-ribbed-leggings/', title: 'Seamless Leggings', desc: 'Buttery soft, squat-proof' },
+    { url: '/products/scrunch-butt-lifting-leggings/', title: 'Scrunch Butt Leggings', desc: 'TikTok viral, peach lift' },
+    { url: '/products/flare-yoga-pants/', title: 'Flare Yoga Pants', desc: 'Trending 2024 style' },
+    { url: '/products/seamless-sports-bra/', title: 'Sports Bras', desc: 'Medium support, removable pads' },
+    { url: '/products/butt-lifting-biker-shorts/', title: 'Biker Shorts', desc: 'Summer essential' },
+    { url: '/products/seamless-matching-set/', title: 'Matching Sets', desc: 'Highest converting' },
+  ],
+  
+  // Information pages
+  info: [
+    { url: '/about/', title: 'About YogaBulk', desc: '12+ years manufacturing experience' },
+    { url: '/faq/', title: 'FAQ', desc: '22 common questions answered' },
+    { url: '/contact/', title: 'Contact Us', desc: 'Get a quote in 30 minutes' },
+  ],
+  
+  // Success stories
+  successStories: [
+    { url: '/success-stories/', title: 'Success Stories', desc: '200+ brand success stories' },
+  ],
+  
+  // Resource articles
+  resources: [
+    { url: '/resources/buy-yoga-leggings-wholesale/', title: 'How to Buy Wholesale', desc: 'Complete sourcing guide' },
+    { url: '/resources/activewear-fabric-guide/', title: 'Fabric Guide', desc: 'Nylon, spandex, polyester explained' },
+    { url: '/resources/how-to-start-activewear-brand/', title: 'Start Your Brand', desc: 'Step-by-step guide' },
+    { url: '/resources/shipping-guide-fba-express/', title: 'Shipping Guide', desc: 'FBA, express, sea freight' },
+  ]
+};
+
+// Generate contextual links based on page type
+function getContextualLinks(type: string, slug?: string, category?: string) {
+  const links = [];
+  
+  switch (type) {
+    case 'home':
+      links.push(...linkDatabase.buyerHub.slice(0, 3));
+      links.push(...linkDatabase.categories.slice(0, 3));
+      links.push(...linkDatabase.dataHub);
+      break;
+      
+    case 'product':
+      links.push(...linkDatabase.buyerHub.slice(0, 2));
+      links.push(...linkDatabase.categories.filter(c => !slug || !c.url.includes(slug)).slice(0, 3));
+      links.push(...linkDatabase.dataHub.slice(0, 2));
+      break;
+      
+    case 'buyer':
+      links.push(...linkDatabase.buyerHub.filter(b => b.url !== `/${currentSlug}/`).slice(0, 3));
+      links.push(...linkDatabase.categories.slice(0, 3));
+      links.push(...linkDatabase.dataHub);
+      break;
+      
+    case 'inventory':
+    case 'data':
+      links.push(...linkDatabase.buyerHub.slice(0, 3));
+      links.push(...linkDatabase.categories.slice(0, 3));
+      links.push(...linkDatabase.info.slice(0, 2));
+      break;
+      
+    case 'about':
+      links.push(...linkDatabase.buyerHub.slice(0, 3));
+      links.push(...linkDatabase.resources.slice(0, 2));
+      links.push(...linkDatabase.successStories.slice(0, 2));
+      break;
+      
+    default:
+      links.push(...linkDatabase.buyerHub.slice(0, 2));
+      links.push(...linkDatabase.categories.slice(0, 2));
+      links.push(...linkDatabase.info.slice(0, 2));
+  }
+  
+  return links;
+}
+
+const contextualLinks = getContextualLinks(pageType, currentSlug, productCategory);
+
+// Get section title based on page type
+const sectionTitles = {
+  home: 'Explore Wholesale Activewear',
+  product: 'Related Products & Resources',
+  category: 'More Categories',
+  buyer: 'Other Buyer Types',
+  inventory: 'Quick Links',
+  data: 'Related Resources',
+  about: 'Learn More',
+  blog: 'Related Articles'
+};
+
+const sectionTitle = sectionTitles[pageType] || 'Related Links';
+---
+
+{contextualLinks.length > 0 && (
+  <section class="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-6">{sectionTitle}</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {contextualLinks.map((link) => (
+          <a 
+            href={link.url}
+            class="group bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all border border-gray-100 hover:border-blue-200"
+          >
+            <h3 class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+              {link.title}
+            </h3>
+            <p class="text-sm text-gray-500 mt-1">{link.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

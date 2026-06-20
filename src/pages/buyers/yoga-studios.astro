@@ -1,0 +1,278 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import RelatedResources from "../../components/RelatedResources.astro";
+import { yogaStudioCases } from "../../data/caseStudies";
+
+const title = "Yoga Studio Wholesale Activewear | Studio Merchandise Supplier";
+const description = "Wholesale activewear for yoga studios. Branded merchandise, retail-ready packaging, studio discounts. 80+ studios trust YogaBulk. Start with $300. Custom logo available.";
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Hero -->
+    <section class="text-center mb-12">
+      <div class="inline-block bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+        🧘 Trusted by 80+ Yoga Studios
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        Yoga Studio Wholesale Activewear
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Premium activewear for yoga studios. Branded merchandise that your students will love to wear. 
+        Increase revenue while building your studio's brand.
+      </p>
+      <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <span class="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">
+          🏷️ Custom Branding
+        </span>
+        <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-medium">
+          📦 Retail Packaging
+        </span>
+        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium">
+          💰 Studio Discounts
+        </span>
+      </div>
+    </section>
+
+    <!-- Why Yoga Studios Choose Us -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">Why Yoga Studios Choose YogaBulk</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🧘</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Yoga-Perfect Designs</h3>
+          <p class="text-gray-600 text-sm">Styles designed specifically for yoga practice. High waist, squat-proof, breathable fabrics that perform in hot yoga and vinyasa flows.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🏷️</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Studio Branding</h3>
+          <p class="text-gray-600 text-sm">Add your studio's logo to every piece. Students become walking billboards for your studio. Build brand recognition in your community.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">💰</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Revenue Boost</h3>
+          <p class="text-gray-600 text-sm">Average studio earns $2,000-5,000/month from merchandise sales. High margins (60-70%) make it a profitable revenue stream.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">📦</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Retail Ready</h3>
+          <p class="text-gray-600 text-sm">Products arrive with hang tags, size labels, and retail packaging. Display them immediately—no prep work needed.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🎁</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Student Retention</h3>
+          <p class="text-gray-600 text-sm">Students who wear your branded gear feel more connected to your studio. Higher retention and more referrals.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+          <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+            <span class="text-2xl">🌿</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Eco Options</h3>
+          <p class="text-gray-600 text-sm">Offer recycled fabric and sustainable options. Appeal to environmentally conscious yogis in your community.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Studio Starter Packages -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Yoga Studio Starter Packages</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-teal-400 to-cyan-500 text-white p-6">
+            <h3 class="text-xl font-bold">Starter Package</h3>
+            <p class="text-teal-100 text-sm">Perfect for small studios</p>
+          </div>
+          <div class="p-6">
+            <div class="text-3xl font-bold text-gray-900 mb-2">$350</div>
+            <p class="text-gray-600 text-sm mb-4">50 pieces • 5 core styles</p>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> High-Waist Leggings (15pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Sports Bras (10pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Yoga Tanks (15pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Studio T-Shirts (10pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Free Logo Setup</li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-600">Retail value: <span class="font-semibold text-gray-900">$1,000-1,250</span></p>
+              <p class="text-sm text-green-600 font-medium">Potential profit: $650-900</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-purple-400 to-indigo-500 text-white p-6">
+            <h3 class="text-xl font-bold">Growth Package</h3>
+            <p class="text-purple-100 text-sm">Most popular choice</p>
+          </div>
+          <div class="p-6">
+            <div class="text-3xl font-bold text-gray-900 mb-2">$650</div>
+            <p class="text-gray-600 text-sm mb-4">100 pieces • 8 styles</p>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> All Starter items (50pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Flare Yoga Pants (15pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Matching Sets (15pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Hoodies (10pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Joggers (10pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Free Logo + Tags</li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-600">Retail value: <span class="font-semibold text-gray-900">$2,000-2,500</span></p>
+              <p class="text-sm text-green-600 font-medium">Potential profit: $1,350-1,850</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+          <div class="bg-gradient-to-r from-amber-400 to-orange-500 text-white p-6">
+            <h3 class="text-xl font-bold">Premium Package</h3>
+            <p class="text-amber-100 text-sm">Full retail experience</p>
+          </div>
+          <div class="p-6">
+            <div class="text-3xl font-bold text-gray-900 mb-2">$1,200</div>
+            <p class="text-gray-600 text-sm mb-4">150 pieces • 12 styles</p>
+            <ul class="space-y-2 text-sm text-gray-700">
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> All Growth items (100pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Eco Collection (25pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Accessories (15pcs)</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Retail Display Rack</li>
+              <li class="flex items-center gap-2"><span class="text-green-500">✓</span> Full Branding Package</li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-600">Retail value: <span class="font-semibold text-gray-900">$3,500-4,200</span></p>
+              <p class="text-sm text-green-600 font-medium">Potential profit: $2,300-3,000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900">Yoga Studio Success Stories</h2>
+      <div class="space-y-8">
+        {yogaStudioCases.map((story) => (
+          <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+            <div class="grid md:grid-cols-3 gap-0">
+              <div class="bg-gradient-to-br from-teal-500 to-cyan-600 text-white p-8 flex flex-col justify-center">
+                <div class="text-4xl font-bold mb-2">{story.currentVolume}</div>
+                <div class="text-teal-100 mb-4">Monthly Revenue</div>
+                <div class="text-sm text-teal-100">Started: {story.startedWith}</div>
+                <div class="text-sm text-teal-100">Timeline: {story.timeline}</div>
+              </div>
+              <div class="md:col-span-2 p-8">
+                <div class="flex items-center gap-4 mb-4">
+                  <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                  <div>
+                    <h3 class="font-bold text-gray-900">{story.name}</h3>
+                    <p class="text-sm text-gray-600">{story.businessType} • {story.location}</p>
+                  </div>
+                </div>
+                <blockquote class="text-gray-700 italic mb-4">"{story.testimonial}"</blockquote>
+                <div class="grid grid-cols-2 gap-4">
+                  {story.results.slice(0, 4).map((result) => (
+                    <div class="flex items-center gap-2">
+                      <span class="text-green-500">✓</span>
+                      <span class="text-sm text-gray-700">{result}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How to Start -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-8 text-gray-900 text-center">How to Add Merchandise to Your Studio</h2>
+      <div class="grid md:grid-cols-5 gap-4">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+          <h3 class="font-bold text-gray-900 mb-2">Choose Package</h3>
+          <p class="text-sm text-gray-600">Select from Starter, Growth, or Premium based on your studio size.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+          <h3 class="font-bold text-gray-900 mb-2">Send Your Logo</h3>
+          <p class="text-sm text-gray-600">Email us your studio logo. We'll create a mockup for approval.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+          <h3 class="font-bold text-gray-900 mb-2">Approve Design</h3>
+          <p class="text-sm text-gray-600">Review and approve the logo placement and sizing.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+          <h3 class="font-bold text-gray-900 mb-2">Receive Inventory</h3>
+          <p class="text-sm text-gray-600">Products arrive in 3-7 days, ready for your retail display.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-teal-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
+          <h3 class="font-bold text-gray-900 mb-2">Start Selling</h3>
+          <p class="text-sm text-gray-600">Display in your studio. Mention to students after class.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-gradient-to-r from-teal-500 to-cyan-500 text-white rounded-2xl p-8 md:p-12 text-center">
+      <h2 class="text-3xl font-bold mb-4">Grow Your Studio's Revenue</h2>
+      <p class="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+        Join 80+ yoga studios earning $2,000-5,000/month from branded merchandise. 
+        Start with just $350 and build your studio's brand.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/8615556105390?text=Hi,%20I%20own%20a%20yoga%20studio%20and%20want%20branded%20merchandise"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white text-teal-600 px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition shadow-lg"
+        >
+          💬 Chat with Studio Specialist
+        </a>
+        <a 
+          href="/inventory/" 
+          class="inline-block bg-teal-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-teal-700 transition border-2 border-teal-400"
+        >
+          Browse Products
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <RelatedResources currentPage="buyer" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Yoga Studio Wholesale Activewear Supplier Guide 2025",
+      "description": "Complete guide for yoga studios looking to source branded merchandise. Includes starter packages and success stories.",
+      "url": "https://yogabulk-backup.pages.dev/buyers/yoga-studios/",
+      "author": {
+        "@type": "Organization",
+        "name": "YogaBulk"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "YogaBulk",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://yogabulk-backup.pages.dev/favicon.svg"
+        }
+      },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-06-01"
+    }
+  </script>
+</BaseLayout>
